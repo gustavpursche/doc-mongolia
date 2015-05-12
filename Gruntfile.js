@@ -117,6 +117,9 @@ module.exports = function( grunt ) {
           preserveLicenseComments: false,
           paths: {
             jquery:             '../../../bower_components/jquery/dist/jquery',
+            modernizr:          '../../../bower_components/modernizr/modernizr',
+            modernizrvh:        '../../../bower_components/modernizr/feature-detects/css-vhunit',
+            modernizrvw:        '../../../bower_components/modernizr/feature-detects/css-vwunit',
             requireLib:         '../../../bower_components/requirejs/require',
             ScrollMagic:        '../../../bower_components/ScrollMagic/' +
                                 'scrollmagic/uncompressed/ScrollMagic',
@@ -133,6 +136,9 @@ module.exports = function( grunt ) {
           },
           include: [
             'jquery',
+            'modernizr',
+            'modernizrvh',
+            'modernizrvw',
             'requireLib',
             'modules/fadeout',
             'modules/image-sequence',

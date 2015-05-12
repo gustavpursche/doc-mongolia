@@ -4,6 +4,9 @@ requirejs.config({
     baseUrl: '/resources/js/dev',
     paths: {
       jquery: BOWER_BASE + 'jquery/dist/jquery',
+      modernizr: BOWER_BASE + 'modernizr/modernizr',
+      modernizrvh: BOWER_BASE + 'modernizr/feature-detects/css-vhunit',
+      modernizrvw: BOWER_BASE + 'modernizr/feature-detects/css-vwunit',
       ScrollMagic: BOWER_BASE + 'ScrollMagic/scrollmagic/uncompressed/ScrollMagic',
       'ScrollMagic-gsap': BOWER_BASE + 'ScrollMagic/scrollmagic/uncompressed/plugins/animation.gsap',
       TweenMax: BOWER_BASE + 'gsap/src/uncompressed/TweenMax',
@@ -18,10 +21,19 @@ requirejs.config({
       webfontloader: {
         exports: 'WebFont',
       },
+      modernizr: {
+        exports: 'Modernizr',
+      },
+      modernizrvh: {
+        deps: [ 'modernizr', ]
+      },
+      modernizrvw: {
+        deps: [ 'modernizr', ]
+      }
     },
 });
 
-require( [ 'webfontloader' ], function( WebFont ) {
+require( [ 'webfontloader', ], function( WebFont ) {
 
   WebFont.load({
     classes: false,
@@ -30,6 +42,23 @@ require( [ 'webfontloader' ], function( WebFont ) {
     },
   });
 
+});
+
+require( [
+  'jquery',
+  'modernizr',
+  'modernizrvh',
+  'modernizrvw', ], function( $, Modernizr ) {
+    var supportsVh = Modernizr.cssvhunit,
+        supportsVw = Modernizr.cssvwunit;
+
+    if( supportsVh && supportsVw ) {
+      return;
+    }
+
+    $(function() {
+      // bring elements on screen height/ screen width
+    });
 });
 
 /* dynamically enhance some sections by defined modules */
