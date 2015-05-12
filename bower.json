@@ -1,17 +1,18 @@
 {
   "name": "webdoc-mongolei",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "homepage": "https://github.com/gustavpursche/webdoc-mongolei",
   "authors": [
-    "Gustav Pursche <gustavpursche@gmail.com>"
+    "Gustav Pursche <gustav.pursche@jib-collective.net>",
+    "Chris Grodotzki <chris.grodotzki@jib-collective.net>",
+    "Ruben Neugebauer <ruben.neugebauer@jib-collective.net>",
+    "Lou Huber-Eustachi <lou.huber-eustachi@jib-collective.net>",
   ],
   "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
-    "test",
-    "tests"
   ],
   "dependencies": {
     "jquery": "~2.1.3",
