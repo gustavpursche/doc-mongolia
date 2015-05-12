@@ -1,0 +1,58 @@
+.slow-scroll-col {
+  &_enhance {
+    margin: 3.5rem -10rem 3.5rem 1.5rem;
+    width: 25rem;
+  }
+
+  &_caption {
+    font-size: .9rem;
+    margin-top: .5rem;
+  }
+
+  &_figure {
+    width: 100%;
+  }
+
+  &_figure + &_figure {
+    margin-top: 2rem;
+  }
+}
+
+@media screen and ( max-width: 1200px ) {
+  .slow-scroll-col {
+    &_enhance {
+      margin-right: -5rem;
+      max-width: 21rem;
+    }
+  }
+}
+
+@media screen and ( max-width: 950px ) {
+  .slow-scroll-col {
+    &_enhance {
+      margin-right: -2rem;
+      max-width: 17rem;
+    }
+  }
+}
+
+@media screen and ( max-width: 850px ) {
+  .slow-scroll-col {
+    &_enhance {
+      display: flex;
+      float: none;
+      margin: 1.5rem 0;
+      max-width: 100%;
+    }
+
+    &_figure {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    &_figure + &_figure {
+      margin-left: .5rem;
+      margin-top: 0;
+    }
+  }
+}

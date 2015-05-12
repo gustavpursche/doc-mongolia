@@ -1,0 +1,37 @@
+@base-font: Georgia, "Times New Roman", serif;
+@headline-font: "Playfair Display", serif;
+@base-font-sans: Arial, sans-serif;
+
+@font-color-base: #333;
+@font-color-image: white;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: @font-color-base;
+}
+
+body,
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+.figure img {
+  width: 100%;
+}
+
+@import "service.less";
+@import "header.less";
+@import "richtext.less";
+@import "section.less";
+@import "utils.less";
+@import "video.less";
+
+@import "image-sequence.less";
+@import "slow-scroll-col.less";
+
+@import "person.less";
+@import "footer.less";

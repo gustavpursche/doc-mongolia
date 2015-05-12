@@ -1,0 +1,65 @@
+.image-sequence {
+  width: 100%;
+
+  &_figure {
+    font-size: 0;
+    line-height: 1;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    width: 100%;
+    z-index: 0;
+  }
+
+  &_caption {
+    color: @font-color-image;
+    font-family: Arial, sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.25;
+    max-width: 30rem;
+    position: absolute;
+    text-shadow: 0 0 1px rgba( 0, 0, 0, .5 );
+    z-index: 100;
+  }
+}
+
+.sm-image-sequencer {
+  max-height: 100vh;
+  overflow: hidden;
+
+  .section {
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  .figure {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 102%;
+    transition: top .6s;
+  }
+
+  .image-sequence_caption {
+    opacity: 0;
+  }
+}
+
+@media screen and ( max-width: 1000px ) {
+  .image-sequence {
+    height: auto;
+
+    &_caption {
+      color: @font-color-base;
+      font-size: .8rem;
+      max-width: 100%;
+      padding: 1rem;
+      position: static;
+      text-shadow: none;
+    }
+  }
+}
