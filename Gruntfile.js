@@ -5,6 +5,9 @@ module.exports = function( grunt ) {
   grunt.initConfig({
     less: {
       development: {
+        options: {
+          ieCompat: false,
+        },
         files: {
           'resources/css/dev/main.css': 'less/index.less',
         },
