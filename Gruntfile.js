@@ -137,6 +137,22 @@ module.exports = function( grunt ) {
             webfontloader:      '../../../bower_components/webfontloader/'+
                                 'webfontloader',
           },
+
+          shim: {
+            webfontloader: {
+              exports: 'WebFont',
+            },
+            modernizr: {
+              exports: 'Modernizr',
+            },
+            modernizrvh: {
+              deps: [ 'modernizr', ]
+            },
+            modernizrvw: {
+              deps: [ 'modernizr', ]
+            }
+          },
+
           include: [
             'jquery',
             'modernizr',

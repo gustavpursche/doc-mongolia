@@ -7,6 +7,15 @@
   width: 100%;
   z-index: 200;
 
+  &--relative {
+    position: static;
+
+    &,
+    a {
+      color: @font-color-base;
+    }
+  }
+
   &_right {
     float: right;
   }
@@ -50,6 +59,27 @@
     a:focus,
     &-link--active {
       text-decoration: underline;
+    }
+  }
+}
+
+@media screen and ( max-width: 480px ) {
+  .service {
+    border-bottom: 1px solid #F2F2F2;
+    padding: .2rem 1.5rem;
+    position: relative;
+
+    &_right {
+      float: none;
+    }
+
+    &_label {
+      display: none;
+    }
+
+    &,
+    a {
+      color: @font-color-base;
     }
   }
 }

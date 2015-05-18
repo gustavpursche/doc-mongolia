@@ -1,7 +1,7 @@
 define(
   [
     'jquery',
-  ], function( $ ) {
+  ], function() {
     var init = function( $container ) {
 
     };

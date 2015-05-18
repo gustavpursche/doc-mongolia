@@ -4,6 +4,32 @@
   overflow: hidden;
   position: relative;
 
+  /* Styles for Devices, which are not properly able to play Videos */
+  &--no-video &_video {
+    display: none;
+  }
+
+  &--no-video {
+    background-color: transparent;
+    height: auto;
+    text-align: center;
+    width: 100%;
+  }
+
+  &--no-video &_content,
+  &--no-video &_mobile-headline {
+    background: transparent;
+    position: static;
+  }
+
+  &--no-video &_published,
+  &--no-video &_headline,
+  &--no-video &_teaser,
+  &--no-video &_mobile-headline {
+    color: @font-color-base;
+    text-shadow: none;
+  }
+
   &_content,
   &_mobile-headline {
     background-image: linear-gradient( to bottom, transparent 0%, black 80% );
@@ -129,6 +155,27 @@
     }
 
     &_mobile-headline {
+      display: none;
+    }
+  }
+}
+
+@media screen and ( max-width: 480px ) {
+  .header {
+    &_content {
+      padding: 1rem;
+    }
+
+    &_headline {
+      font-size: 2.2rem;
+    }
+
+    &_teaser {
+      font-size: 1.1rem;
+      padding-top: 0;
+    }
+
+    &_video {
       display: none;
     }
   }

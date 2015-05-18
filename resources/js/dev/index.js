@@ -15,9 +15,6 @@ requirejs.config({
     },
 
     shim: {
-      verge: {
-        exports: 'verge'
-      },
       webfontloader: {
         exports: 'WebFont',
       },
@@ -99,6 +96,20 @@ require( [ 'jquery', ], function( $ ) {
       playlist( $playlist );
     } );
   })
+
+});
+
+/* detect iOs devices to hide the header */
+require( [ 'jquery' ], function( $ ) {
+
+  $(function() {
+    if( !/(iPad|iPhone|iPod)/g.test( navigator.userAgent ) ) {
+      return;
+    }
+
+    $( '.header' ).addClass( 'header--no-video' );
+    $( '.service' ).addClass( 'service--relative' );
+  });
 
 });
 
