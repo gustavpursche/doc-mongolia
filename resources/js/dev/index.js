@@ -111,5 +111,13 @@ require( [ 'jquery' ], function( $ ) {
     $( '.service' ).addClass( 'service--relative' );
   });
 
+  $(function() {
+    if( $( window ).width() < 1000 ) {
+      $.each( $( '.video' ), function() {
+        this.play();
+      });
+    }
+  });
+
 });
 
