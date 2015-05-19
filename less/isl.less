@@ -1,0 +1,53 @@
+.isl {
+
+  p {
+    margin: 0;
+  }
+
+  &_text {
+    position: relative;
+  }
+
+  &_sky {
+    background-image: linear-gradient( to bottom, white, rgb( 231, 239, 228 ) 50% );
+    padding-bottom: 1.5rem;
+
+    &-text {
+      padding-left: 10rem;
+    }
+  }
+
+  &_earth {
+    background-image: data-uri( '../resources/icon/earth.svg' );
+    padding-bottom: 1.5rem;
+    padding-top: 1.5rem;
+
+    &-text {
+      padding-right: 4rem;
+    }
+  }
+
+  &_well,
+  &_tower {
+    background-color: white;
+    position: absolute;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &_well {
+    bottom: -1.5rem;
+    height: 10rem;
+    left: 0;
+    width: 8rem;
+  }
+
+  &_tower {
+    height: 30rem;
+    right: -16rem;
+    bottom: -20rem;
+    width: 12rem;
+  }
+}
