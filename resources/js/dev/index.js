@@ -99,9 +99,9 @@ require( [ 'jquery', ], function( $ ) {
 
 });
 
-/* detect iOs devices to hide the header */
 require( [ 'jquery' ], function( $ ) {
 
+  /* detect iOs devices to hide the header */
   $(function() {
     if( !/(iPad|iPhone|iPod)/g.test( navigator.userAgent ) ) {
       return;
@@ -111,6 +111,7 @@ require( [ 'jquery' ], function( $ ) {
     $( '.service' ).addClass( 'service--relative' );
   });
 
+  /* play all videos, when the tweens are not applied */
   $(function() {
     if( $( window ).width() < 1000 ) {
       $.each( $( '.video' ), function() {
