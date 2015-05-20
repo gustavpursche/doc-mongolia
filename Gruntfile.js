@@ -36,6 +36,26 @@ module.exports = function( grunt ) {
       },
     },
 
+    svgmin: {
+      options: {
+        plugins: [
+          {
+              removeViewBox: false
+          }, {
+              removeUselessStrokeAndFill: false
+          }
+        ]
+      },
+      dist: {
+        files: {
+          'resources/icon/earth.svg': 'resources/icon/earth.svg',
+          'resources/icon/sky.svg': 'resources/icon/sky.svg',
+          'resources/icon/well.svg': 'resources/icon/well.svg',
+          'resources/icon/tower.svg': 'resources/icon/tower.svg',
+        }
+      }
+    },
+
     replace: {
       dist: {
         options: {
