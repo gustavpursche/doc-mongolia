@@ -61,3 +61,65 @@
     width: 16rem;
   }
 }
+
+@media screen and ( max-width: 1300px ) {
+  .isl {
+    &_well {
+      left: -9rem;
+    }
+
+    &_tower {
+      right: -12rem;
+    }
+
+    &_text > p {
+      max-width: 38rem;
+      padding-left: 0;
+    }
+  }
+}
+
+@media screen and ( max-width: 1050px ) {
+  .isl {
+    &_well {
+      left: -5rem;
+    }
+
+    &_tower {
+      right: -4rem;
+    }
+
+    &_text > p {
+      max-width: 30rem;
+    }
+  }
+}
+
+@media screen and ( max-width: 850px ) {
+  .isl {
+    &_sky,
+    &_earth {
+      background: transparent;
+      padding: 0;
+    }
+
+    &_text {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+
+      > p {
+        max-width: 100%;
+      }
+    }
+
+    &_well,
+    &_tower {
+      display: none;
+    }
+
+    &_earth {
+      margin-bottom: -1.5rem;
+      margin-top: 1.5rem;
+    }
+  }
+}
