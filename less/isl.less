@@ -9,18 +9,27 @@
   }
 
   &_sky {
-    background-image: linear-gradient( to bottom, white, rgb( 231, 239, 228 ) 50% );
-    padding-bottom: 1.5rem;
+    background-image: data-uri( '../resources/icon/sky.svg' );
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    padding-bottom: 3.5rem;
+    padding-top: 2rem;
 
     &-text {
-      padding-left: 10rem;
+      padding-left: 4rem;
+    }
+
+    .richtext_suheadline {
+      margin-top: 0;
     }
   }
 
   &_earth {
     background-image: data-uri( '../resources/icon/earth.svg' );
-    padding-bottom: 1.5rem;
-    padding-top: 1.5rem;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    padding-bottom: 3.5rem;
+    padding-top: 3.5rem;
 
     &-text {
       padding-right: 4rem;
@@ -29,7 +38,6 @@
 
   &_well,
   &_tower {
-    background-color: white;
     position: absolute;
 
     img {
@@ -38,16 +46,16 @@
   }
 
   &_well {
-    bottom: -1.5rem;
+    bottom: -3.5rem;
     height: 10rem;
-    left: 0;
+    left: -6rem;
     width: 8rem;
   }
 
   &_tower {
     height: 30rem;
     right: -16rem;
-    bottom: -20rem;
+    bottom: -14.45rem;
     width: 12rem;
   }
 }

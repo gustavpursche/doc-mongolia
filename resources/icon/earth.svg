@@ -1,116 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="1280.0945"
-   height="400.36221"
-   viewBox="0 0 1280.0945 400.36222"
-   id="svg3447"
-   version="1.1"
-   inkscape:version="0.91 r13725"
-   sodipodi:docname="earth.svg">
-  <defs
-     id="defs3449" />
-  <sodipodi:namedview
-     id="base"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageopacity="0.0"
-     inkscape:pageshadow="2"
-     inkscape:zoom="0.7"
-     inkscape:cx="574.49819"
-     inkscape:cy="101.7972"
-     inkscape:document-units="px"
-     inkscape:current-layer="layer1"
-     showgrid="false"
-     units="px"
-     inkscape:window-width="1920"
-     inkscape:window-height="1151"
-     inkscape:window-x="84"
-     inkscape:window-y="33"
-     inkscape:window-maximized="0" />
-  <metadata
-     id="metadata3452">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <g
-     inkscape:label="Layer 1"
-     inkscape:groupmode="layer"
-     id="layer1"
-     transform="translate(0,-651.99996)">
-    <rect
-       style="fill:#898989;fill-opacity:1"
-       id="rect3455"
-       width="1284.2241"
-       height="405.29346"
-       x="-0.45866814"
-       y="651.71851" />
-    <rect
-       style="fill:#898989;fill-opacity:1"
-       id="rect3457"
-       width="20.714285"
-       height="15"
-       x="28.214285"
-       y="767.005" />
-    <rect
-       style="fill:#898989;fill-opacity:1"
-       id="rect3459"
-       width="26.785715"
-       height="30.714285"
-       x="60.357143"
-       y="734.14789" />
-    <path
-       style="fill:#898989;fill-opacity:1"
-       d="m -0.38194206,202.81647 0,-202.14285322 641.42857206,0 641.42857,0 0,202.14285322 0,202.14286 -641.42857,0 -641.42857206,0 0,-202.14286 z"
-       id="path3461"
-       inkscape:connector-curvature="0"
-       transform="translate(0,651.99996)" />
-    <path
-       style="fill:#898989;fill-opacity:1"
-       d="m -0.38194206,202.81647 0,-202.14285322 641.42857206,0 641.42857,0 0,202.14285322 0,202.14286 -641.42857,0 -641.42857206,0 0,-202.14286 z"
-       id="path3463"
-       inkscape:connector-curvature="0"
-       transform="translate(0,651.99996)" />
-    <path
-       style="fill:#898989;fill-opacity:1"
-       d="M -0.85813249,405.43552 C -1.3819421,404.91172 -1.8105135,313.30457 -1.8105135,201.86409 l 0,-202.61904465 642.8571435,0 642.85717,0 0,203.57142465 0,203.57143 -641.90478,0 c -353.04763,0 -642.33334306,-0.42857 -642.85715249,-0.95238 z"
-       id="path3465"
-       inkscape:connector-curvature="0"
-       transform="translate(0,651.99996)" />
-    <path
-       style="fill:#e5ddc6;fill-opacity:1"
-       d="m -1.8105135,202.81647 0,-203.57142465 642.8571435,0 642.85717,0 0,203.57142465 0,203.57143 -642.85717,0 -642.8571435,0 0,-203.57143 z"
-       id="path3467"
-       inkscape:connector-curvature="0"
-       transform="translate(0,651.99996)" />
-    <path
-       style="fill:#cbc1a0;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.72703367px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 359.56097,789.24759 c 131.42857,0.71428 250.48436,-40.6456 443.76551,-44.68577 106.05841,3.03607 302.38392,59.226 378.27842,64.2379 77.5373,5.12038 193.4242,-47.89155 193.4242,-47.89155 l -4.1674,21.59001 c 0,0 -102.003,68.8942 -182.4795,62.82206 -85.8061,-4.0481 -281.79301,-64.1256 -391.58221,-75.25786 -532.90296,42.59421 -1000.67861,95.00644 -856.606385,-27.13094 28.912506,-38.17381 -76.158895,74.04997 -14.795501,29.54027 0,0 261.305716,26.06159 434.162866,16.77588 z"
-       id="path4269"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccsccccccc" />
-    <rect
-       style="fill:#898989;fill-opacity:1;stroke:none;stroke-opacity:1"
-       id="rect4290"
-       width="1334.2858"
-       height="21.428572"
-       x="-35.714287"
-       y="648.07642" />
-  </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	 x="0px" y="0px" viewBox="0 0 1280 400" xml:space="preserve">
+<rect id="Earth_Background" y="4" fill="#E5DDC6" width="1280" height="400"/>
+<path id="dunkle_Gesteinsschicht_1_" fill="#CBC1A1" d="M1280,78.4c-49.4,1.7-124.5,3.8-216,4.3c-231.1,1.4-258.6-9-438-7.2
+	c-188.9,1.9-217.6,14-405,11.6c-93.5-1.2-170.3-5.3-221-8.7c0-9.2,0-18.3,0-27.5c48.8,4.6,125.1,10.7,219,13
+	c180,4.5,215.8-9.9,417-13c173.4-2.7,195.3,7.3,427,5.1c92.6-0.9,168.3-3.2,217-5.1C1280,60.1,1280,69.2,1280,78.4z"/>
+<path id="helle_Gesteinsschicht" fill="#F3F0E6" d="M1281,211.8c-22.5-8-57.7-18.7-102-24.7c-109.9-14.8-177.6,12.7-260.9,24.7
+	c-81.6,11.7-101.9-2.5-187.8-17.6C692,187.4,652.1,181.8,571,176c-87.5-6.2-138.8-0.1-340,17c-50,4.2-129.8,10.9-230,18.8
+	c0-13.6,0-27.2,0-40.9c107.3,7.8,194.1,3.7,255-1.9c192.3-17.6,235-25,235-25c49.6-8.6,101.7-20,162-3c15.9,4.5,30.7,10.5,64.4,18.8
+	c38.3,9.5,69.9,14.3,95.6,18.2c33.3,5,61.2,8,73,9.1c117.8,10.6,180.9-35.2,315-25.5c33.9,2.4,61.6,6.4,80,9.4
+	C1281,184.5,1281,198.1,1281,211.8z"/>
+<path id="dunkle_Gesteinsschicht" fill="#CBC1A1" d="M1279,342.2c-175.6-23.7-318.6-25.2-418-22c-199.2,6.5-227.9,32.2-392,20
+	c-92.3-6.9-164.3-21-292-16c-74.9,2.9-136.4,11.2-178,18c0-10,0-20,0-30c32.4-6.5,80.4-14.7,139-19c144.7-10.5,229.4,12,336,22
+	c143,13.3,157.6-11.6,368-20c102.4-4.1,251.9-4.2,437,17C1279,322.2,1279,332.2,1279,342.2z"/>
+<rect id="Ground_Shape" y="-4.2" fill="#89898A" width="1280" height="15.4"/>
 </svg>
