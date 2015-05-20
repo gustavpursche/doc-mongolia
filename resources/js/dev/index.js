@@ -87,18 +87,6 @@ require( [ 'jquery', ], function( $ ) {
 
 });
 
-require( [ 'jquery', ], function( $ ) {
-
-  $(function() {
-    var $playlist = $( '.js--playlist' );
-
-    require( [ 'modules/video-playlist' ], function( playlist ) {
-      playlist( $playlist );
-    } );
-  })
-
-});
-
 require( [ 'jquery' ], function( $ ) {
 
   /* detect iOs devices to hide the header */

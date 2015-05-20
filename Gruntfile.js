@@ -182,7 +182,6 @@ module.exports = function( grunt ) {
             'modules/fadeout',
             'modules/image-sequence',
             'modules/slow-scroll-col',
-            'modules/video-playlist',
             'ScrollMagic',
             'TimelineMax',
             'TweenMax',
