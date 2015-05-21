@@ -36,6 +36,21 @@ module.exports = function( grunt ) {
       },
     },
 
+    htmlmin: {
+      dist: {
+        options: {
+          removeComments: true,
+          removeAttributeQuotes: true,
+          removeRedundantAttributes: true,
+          collapseWhitespace: true,
+          preserveLineBreaks: true,
+        },
+        files: {
+          'de/dist/index.html': 'de/dist/index.html',
+        }
+      },
+    },
+
     svgmin: {
       options: {
         plugins: [
@@ -229,6 +244,7 @@ module.exports = function( grunt ) {
     'cssmin',
     'requirejs',
     'replace:dist',
+    'htmlmin:dist',
   ]);
 
 };
