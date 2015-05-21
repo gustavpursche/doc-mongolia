@@ -42,27 +42,41 @@ define(
                 $caption = $figure.children( '.image-sequence_caption' ),
                 imageAnimation = new TimelineLite(),
                 captionLeft = ( $figure.parent().outerWidth() - $caption.outerWidth() ) / 2,
+                captionFadeTime = 1.2,
+                imageFadeTime = 1.5,
                 captionFadeIn = TweenLite.to( $caption,
-                                              .8,
+                                              captionFadeTime,
                                               {
                                                 opacity: 1,
+                                              }, {
+                                                ease: Power4.easeIn,
+                                                y: 0
                                               } ),
                 captionFadeOut = TweenLite.to( $caption,
-                                               .8,
+                                               captionFadeTime,
                                                 {
                                                   opacity: 0,
+                                                }, {
+                                                  ease: Power4.easeIn,
+                                                  y: 0
                                                 } ),
                 imageFadeIn = TweenLite.fromTo( $nextFigure,
-                                                1,
+                                                imageFadeTime,
                                                 {
                                                   opacity: 0,
                                                 }, {
                                                   opacity: 1,
+                                                }, {
+                                                  ease: Power4.easeOut,
+                                                  y: 0
                                                 } ),
                 imageFadeOut = TweenLite.to( $figure,
-                                             1,
+                                             imageFadeTime,
                                              {
                                                opacity: 0,
+                                             }, {
+                                               ease: Power4.easeOut,
+                                               y: 0
                                              } );
 
             if( $caption.length ) {
