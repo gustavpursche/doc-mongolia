@@ -55,6 +55,24 @@ require( [
 
     $(function() {
       // bring elements on screen height/ screen width
+      var updateVhElements = function() {
+            var $window = $( window ),
+                windowWidth = $window.width(),
+                windowHeight = $window.height(),
+                selectors = [
+                  '.sm-image-sequencer .section',
+                ],
+                updateElement = function() {
+                  $( this )
+                    .css({
+                      height: windowHeight,
+                    })
+                };
+
+            $.each( selectors, updateElement; )
+          };
+
+          updateVhElements();
     });
 });
 
