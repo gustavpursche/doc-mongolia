@@ -8,7 +8,6 @@ define(
       var container = $container.get( 0 ),
           controller = new ScrollMagic.Controller(),
           $slowCol = $container.find( '.slow-scroll-col_enhance' ),
-          slowCol = $slowCol.get( 0 ),
           fadeIn = TweenLite.fromTo( $slowCol,
                                      1,
                                      {
