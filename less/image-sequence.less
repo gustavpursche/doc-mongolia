@@ -14,9 +14,9 @@
   &_caption {
     color: @font-color-image;
     font-family: Arial, sans-serif;
-    font-size: 1.2rem;
-    line-height: 1.25;
-    max-width: 30rem;
+    font-size: 1rem;
+    line-height: 1.3;
+    max-width: 28rem;
     position: absolute;
     text-shadow: 0 0 1px rgba( 0, 0, 0, .5 );
     z-index: 100;
@@ -30,23 +30,41 @@
 
   .section {
     height: 100vh;
+    left: 0;
     position: absolute;
     top: 0;
-    left: 0;
     width: 100%;
   }
 
   .figure {
-    position: absolute;
-    top: 0;
+    background-color: white;
+    height: 100%;
     left: 0;
+    padding: 1rem;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    transition: top .4s;
+    vertical-align: middle;
     width: 100%;
-    min-height: 102%;
-    transition: top .6s;
+
+    img,
+    video {
+      height: auto;
+      max-height: 100%;
+      max-width: 100%;
+      position: relative;
+      width: auto;
+    }
   }
 
   .image-sequence_caption {
+    background-color: rgba( 0, 0, 0, .5 );
+    bottom: 5%;
     opacity: 0;
+    padding: .5rem;
+    max-width: 40rem;
+    width: 40rem;
   }
 }
 
