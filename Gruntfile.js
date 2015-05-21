@@ -143,15 +143,19 @@ module.exports = function( grunt ) {
             modernizr:          '../../../bower_components/modernizr/modernizr',
             modernizrvh:        '../../../bower_components/modernizr/feature-detects/css-vhunit',
             modernizrvw:        '../../../bower_components/modernizr/feature-detects/css-vwunit',
-            requireLib:         '../../../bower_components/requirejs/require',
+            almond:             '../../../bower_components/almond/almond',
             ScrollMagic:        '../../../bower_components/ScrollMagic/' +
                                 'scrollmagic/uncompressed/ScrollMagic',
             'ScrollMagic-gsap': '../../../bower_components/ScrollMagic/' +
                                 'scrollmagic/uncompressed/plugins/animation.gsap',
             TimelineLite:       '../../../bower_components/gsap/src/' +
                                 'uncompressed/TimelineLite',
+            TimelineMax:        '../../../bower_components/gsap/src/' +
+                                'uncompressed/TimelineMax',
             TweenLite:          '../../../bower_components/gsap/src/' +
                                 'uncompressed/TweenLite',
+            TweenMax:           '../../../bower_components/gsap/src/' +
+                                'uncompressed/TweenMax',
             webfontloader:      '../../../bower_components/webfontloader/'+
                                 'webfontloader',
           },
@@ -172,18 +176,15 @@ module.exports = function( grunt ) {
           },
 
           include: [
+            'almond',
             'jquery',
-            'modernizr',
             'modernizrvh',
             'modernizrvw',
-            'requireLib',
             'modules/fadeout',
             'modules/image-sequence',
             'modules/slow-scroll-col',
             'ScrollMagic',
             'ScrollMagic-gsap',
-            'TimelineLite',
-            'TweenLite',
             'webfontloader',
           ],
           uglify2: {
