@@ -69,7 +69,7 @@ require( [
                     })
                 };
 
-            $.each( selectors, updateElement; )
+            $.each( selectors, updateElement );
           };
 
           updateVhElements();
