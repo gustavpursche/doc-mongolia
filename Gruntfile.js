@@ -148,12 +148,10 @@ module.exports = function( grunt ) {
                                 'scrollmagic/uncompressed/ScrollMagic',
             'ScrollMagic-gsap': '../../../bower_components/ScrollMagic/' +
                                 'scrollmagic/uncompressed/plugins/animation.gsap',
-            TimelineMax:        '../../../bower_components/gsap/src/'+
-                                'uncompressed/TimelineMax',
+            TimelineLite:       '../../../bower_components/gsap/src/' +
+                                'uncompressed/TimelineLite',
             TweenLite:          '../../../bower_components/gsap/src/' +
                                 'uncompressed/TweenLite',
-            TweenMax:           '../../../bower_components/gsap/src/' +
-                                'uncompressed/TweenMax',
             webfontloader:      '../../../bower_components/webfontloader/'+
                                 'webfontloader',
           },
@@ -183,8 +181,9 @@ module.exports = function( grunt ) {
             'modules/image-sequence',
             'modules/slow-scroll-col',
             'ScrollMagic',
-            'TimelineMax',
-            'TweenMax',
+            'ScrollMagic-gsap',
+            'TimelineLite',
+            'TweenLite',
             'webfontloader',
           ],
           uglify2: {

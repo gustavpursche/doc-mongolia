@@ -3,7 +3,9 @@ define(
     'jquery',
     'ScrollMagic',
     'ScrollMagic-gsap',
-  ], function( $, ScrollMagic ) {
+  ],
+
+  function( $, ScrollMagic ) {
     var init = function( $container ) {
       var container = $container.get( 0 ),
           controller = new ScrollMagic.Controller(),

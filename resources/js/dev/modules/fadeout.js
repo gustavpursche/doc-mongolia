@@ -4,6 +4,7 @@ define(
     'ScrollMagic',
     'ScrollMagic-gsap',
   ],
+
   function( $, ScrollMagic ) {
     var init = function( $container ) {
       var container = $container.get( 0 ),
