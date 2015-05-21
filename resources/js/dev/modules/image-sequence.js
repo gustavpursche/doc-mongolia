@@ -8,6 +8,7 @@ define(
   function( $, ScrollMagic ) {
     var init = function( $container ) {
       var imageSequence = new TimelineLite(),
+          controller = controller = new ScrollMagic.Controller(),
           container = $container.get( 0 ),
           $images = $container.children( '.image-sequence_figure' ),
           fadeIn = TweenLite.fromTo( $container,
@@ -103,7 +104,7 @@ define(
           offset: 150,
       }).setTween( fadeIn )
         .on( 'enter', initSection )
-        .addTo( new ScrollMagic.Controller() );
+        .addTo( controller  );
 
       /* handle blend of sequence-elements */
       new ScrollMagic.Scene({
@@ -112,7 +113,7 @@ define(
           duration: '200%',
       }).setPin( container, { spacerClass: 'sm-image-sequencer' } )
         .setTween( imageSequence )
-        .addTo( new ScrollMagic.Controller() );
+        .addTo( controller );
     };
 
     return init;
