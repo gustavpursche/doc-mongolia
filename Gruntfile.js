@@ -67,6 +67,7 @@ module.exports = function( grunt ) {
           'resources/icon/sky.svg': 'resources/icon/sky.svg',
           'resources/icon/well.svg': 'resources/icon/well.svg',
           'resources/icon/tower.svg': 'resources/icon/tower.svg',
+          'resources/logo/greenpeace-magazine-logo.svg': 'resources/logo/greenpeace-magazine-logo.svg',
         }
       }
     },
@@ -242,6 +243,7 @@ module.exports = function( grunt ) {
     'less',
     'concat',
     'cssmin',
+    'svgmin:dist',
     'requirejs',
     'replace:dist',
     'htmlmin:dist',
