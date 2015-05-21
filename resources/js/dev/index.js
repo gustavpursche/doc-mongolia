@@ -89,16 +89,17 @@ require( [ 'jquery', ], function( $ ) {
           return;
         }
 
-        if( $( window ).width() < 1000 ) {
-          return;
-        }
-
         require( [ 'modules/' + module ], function( module ) {
           module( $section, options );
         });
       };
 
   $(function() {
+
+    if( $( window ).width() < 1000 ) {
+      return;
+    }
+
     /* scrollmagic trigger */
     $.each( $( '.js--enhance' ), enhanceSection );
   });
