@@ -198,7 +198,6 @@ module.exports = function( grunt ) {
             'modules/fadeout',
             'modules/image-sequence',
             'modules/slow-scroll-col',
-            'ScrollMagic',
             'ScrollMagic-gsap',
             'webfontloader',
           ],
