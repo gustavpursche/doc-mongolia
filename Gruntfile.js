@@ -211,6 +211,18 @@ module.exports = function( grunt ) {
     },
 
     watch: {
+      svg: {
+        files: [
+          'resources/icon/*.svg',
+        ],
+        tasks: [
+          'svgmin:dist',
+        ],
+        options: {
+          spawn: false,
+          atBegin: true,
+        },
+      },
       resources: {
         files: [
           'less/*.less',
@@ -221,6 +233,7 @@ module.exports = function( grunt ) {
         ],
         options: {
           spawn: false,
+          atBegin: true,
         },
       },
       html: {
@@ -232,6 +245,7 @@ module.exports = function( grunt ) {
         ],
         options: {
           spawn: false,
+          atBegin: true,
         }
       }
     },
