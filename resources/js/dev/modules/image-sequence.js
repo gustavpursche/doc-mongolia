@@ -51,6 +51,10 @@ define(
                 $nextFigure = $figure.next( '.image-sequence_figure' ),
                 $caption = $figure.children( '.image-sequence_caption' ),
                 captionWidth = $caption.outerWidth(),
+                dataTo = $figure.data( 'to' ) || {},
+                defaultsTo = {
+                  opacity: 0,
+                },
                 imageAnimation = new TimelineLite(),
                 captionLeft = ( containerWidth - captionWidth ) / 2,
                 captionFadeTime = .8,
@@ -83,9 +87,7 @@ define(
                                                 } ),
                 imageFadeOut = TweenLite.to( $figure,
                                              imageFadeTime,
-                                             {
-                                               opacity: 0,
-                                             }, {
+                                             $.extend( {}, defaultsTo, dataTo ), {
                                                ease: Power4.easeOut,
                                                y: 0
                                              } );
