@@ -42,7 +42,7 @@ define(
                 $caption = $figure.children( '.image-sequence_caption' ),
                 imageAnimation = new TimelineLite(),
                 captionLeft = ( $figure.parent().outerWidth() - $caption.outerWidth() ) / 2,
-                captionFadeTime = 1.2,
+                captionFadeTime = .8,
                 imageFadeTime = 1.5,
                 captionFadeIn = TweenLite.to( $caption,
                                               captionFadeTime,
@@ -86,13 +86,6 @@ define(
 
               imageAnimation
                 .add( captionFadeIn );
-
-              /* pause for a short time */
-              imageAnimation
-                .set( {}, {}, '+=.2' );
-
-              imageAnimation
-               .add( captionFadeOut );
             }
 
             /* Blend over images */
@@ -102,6 +95,15 @@ define(
                   imageFadeOut,
                   imageFadeIn,
                 ]);
+            } else {
+              if( $caption.length ) {
+                /* pause for a short time */
+                imageAnimation
+                  .set( {}, {}, '.2' );
+
+                imageAnimation
+                  .add( captionFadeOut );
+              }
             }
 
             imageSequence
