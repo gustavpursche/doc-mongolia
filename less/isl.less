@@ -5,19 +5,24 @@
   }
 
   &_text {
-    position: relative;
+    bottom: 0;
+    left: 50%;
+    position: absolute;
+    transform: translate( -50%, 0 );
   }
 
   &_sky {
     background-image: data-uri( '../resources/icon/sky.svg' );
-    background-position: bottom center;
+    background-position: bottom left;
     background-repeat: no-repeat;
     background-size: 100% auto;
-    padding-bottom: 3.5rem;
+    min-height: 400px;
     padding-top: 2rem;
+    position: relative;
+    z-index: 100;
 
     &-text {
-      padding-left: 4rem;
+      padding: 0 2rem 7rem 0;
     }
 
     .richtext_subheadline {
@@ -27,14 +32,17 @@
 
   &_earth {
     background-image: data-uri( '../resources/icon/earth.svg' );
-    background-position: top center;
+    background-position: top left;
     background-repeat: no-repeat;
     background-size: 100% auto;
-    padding-bottom: 3.5rem;
-    padding-top: 3.5rem;
+    min-height: 515px;
+    position: relative;
 
     &-text {
+      bottom: auto;
+      margin-left: -8rem;
       padding-right: 4rem;
+      top: 8rem;
     }
   }
 
@@ -48,78 +56,174 @@
   }
 
   &_well {
-    bottom: -3.5rem;
-    height: 10rem;
-    left: -6rem;
+    bottom: -9px;
+    height: auto;
+    left: -14rem;
     width: 8rem;
   }
 
   &_tower {
-    height: 30rem;
-    right: -16rem;
-    bottom: -16.1rem;
-    width: 16rem;
+    height: auto;
+    right: -26rem;
+    bottom: -23.2rem;
+    width: 23rem;
   }
 }
 
-@media screen and ( max-width: 1300px ) {
+@media screen and ( max-width: 1400px ) {
   .isl {
+    &_tower {
+      bottom: -18.2rem;
+      right: -16rem;
+      width: 18rem;
+    }
+
     &_well {
       left: -9rem;
+      width: 7rem;
     }
 
-    &_tower {
-      right: -12rem;
+    &_sky-text {
+      padding-left: 4rem;
     }
 
-    &_text > p {
-      max-width: 38rem;
-      padding-left: 0;
-    }
-  }
-}
-
-@media screen and ( max-width: 1050px ) {
-  .isl {
-    &_well {
-      left: -5rem;
-    }
-
-    &_tower {
-      right: -4rem;
-    }
-
-    &_text > p {
-      max-width: 30rem;
-    }
-  }
-}
-
-@media screen and ( max-width: 850px ) {
-  .isl {
-    &_sky,
     &_earth {
-      background: transparent;
-      padding: 0;
+      min-height: 450px;
+    }
+  }
+}
+
+@media screen and ( max-width: 1180px ) {
+  .isl {
+    &_tower {
+      bottom: -15.3rem;
+      right: -13rem;
+      width: 15rem;
+    }
+
+    &_well {
+      left: -7rem;
+      width: 6rem;
+    }
+
+    &_sky {
+      min-height: 325px;
+    }
+
+    &_earth {
+      min-height: 335px;
+    }
+
+    &_sky-text {
+      padding-bottom: 3rem;
+      padding-left: 1rem;
+      padding-right: 4rem;
+    }
+
+    &_earth-text {
+      top: 6rem;
+    }
+  }
+}
+
+@media screen and ( max-width: 950px ) {
+  .isl {
+    &_tower {
+      bottom: -12.3rem;
+      right: -11rem;
+      width: 12rem;
+    }
+
+    &_sky-text {
+      padding-right: 0;
+    }
+  }
+}
+
+@media screen and ( max-width: 880px ) {
+  .isl {
+    &_earth,
+    &_sky {
+      min-height: 278px;
+    }
+
+    &_well {
+      left: -6rem;
+    }
+
+    &_earth-text {
+      top: 4rem;
     }
 
     &_text {
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
+      font-size: 1.1rem;
+    }
+  }
+}
 
-      > p {
-        max-width: 100%;
-      }
+@media screen and ( max-width: 800px ) {
+  .isl {
+    &_tower {
+      bottom: -10.3rem;
+      right: -10rem;
+      width: 10rem;
     }
 
-    &_well,
-    &_tower {
+    &_well {
+      bottom: -6px;
+      width: 4rem;
+    }
+
+    &_sky-text {
+      padding-left: 0;
+    }
+
+    &_earth,
+    &_sky {
+      min-height: 240px;
+    }
+
+    &_text {
+      font-size: 1rem;
+    }
+
+    .richtext_subheadline {
+      font-size: 1.2rem;
+      margin-bottom: .4rem;
+    }
+  }
+}
+
+@media screen and ( max-width: 730px ) {
+  .isl {
+    margin-bottom: -1rem;
+
+    &_earth,
+    &_sky {
+      background: transparent;
+      min-height: auto;
+      padding: 0;
+    }
+
+    &_tower,
+    &_well {
       display: none;
     }
 
-    &_earth {
-      margin-bottom: -1.5rem;
-      margin-top: 1.5rem;
+    &_text {
+      font-size: 1.2rem;
+      margin-left: 0;
+      padding: 0 1.5rem;
+      position: static;
+      transform: none;
+    }
+
+    p {
+      margin: 1rem 0 0 0;
+    }
+
+    .richtext_subheadline {
+      font-size: 1.4rem;
     }
   }
 }
