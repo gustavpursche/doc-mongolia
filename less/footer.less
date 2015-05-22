@@ -1,6 +1,33 @@
 .footer {
+  p {
+    font-family: @base-font-sans;
+  }
+
+  h2 {
+    font-family: @headline-font;
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin-bottom: .6rem;
+    padding-bottom: .3rem;
+  }
+
+  h2 + p,
+  h2 + ul {
+    margin-top: .2rem;
+  }
+
   &_partners img {
     height: auto;
     width: 20rem;
+  }
+
+  &_author {
+    font-size: 1.1rem;
+    font-weight: bold
+  }
+
+  .image-sequence_figure.figure {
+    padding-bottom: 0;
+    padding-top: 0;
   }
 }
