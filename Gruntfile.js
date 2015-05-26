@@ -18,6 +18,7 @@ module.exports = function( grunt ) {
       dist: {
         src: [
           'bower_components/normalize.css/normalize.css',
+          'bower_components/slick.css/slick/slick.css',
           'resources/css/dev/main.css',
         ],
         dest: 'resources/css/dist/main.css',
