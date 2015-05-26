@@ -106,11 +106,21 @@ require( [ 'jquery', ], function( $ ) {
 
 });
 
-require( [ 'jquery' ], function( $ ) {
-
-  /* detect iOs devices to hide the header */
+/* Polyfill Area */
+require( [
+  'jquery',
+  'utils',
+  ],
+  function( $, utils ) {
   $(function() {
-    if( !/(iPad|iPhone|iPod)/g.test( navigator.userAgent ) ) {
+
+    /* detect iOs devices to hide the header */
+    if( !utils.isIosDevice() ) {
+      return;
+    }
+
+    /* detect video capabilities */
+    if( utils.canPlayVideo( 'mp4' ) ) {
       return;
     }
 
@@ -128,4 +138,3 @@ require( [ 'jquery' ], function( $ ) {
   });
 
 });
-
