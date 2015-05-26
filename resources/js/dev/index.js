@@ -138,3 +138,53 @@ require( [
   });
 
 });
+
+require( [ 'jquery', ], function( $ ) {
+  var buildSlickHtml = function( $container ) {
+        var $images = $container.find( '.figure' ),
+            $list = $( '<ul/>' ),
+
+            addListElement = function( index, el ) {
+              var $listEl = $( '<li/>' );
+
+              $list.append( $listEl );
+            };
+
+        $.each( $images, addListElement );
+
+        return $( '<div/>' ).append( $list ).html();
+      },
+
+      initLightbox = function( $container ) {
+        var $trigger = $container.find( 'button' );
+
+        /* Open Lightbox */
+        $trigger.on( 'click', function( e ) {
+          e.preventDefault();
+
+          $.colorbox({
+            html: buildSlickHtml( $container ),
+          });
+
+          $( document )
+            .on( 'cbox_complete', function() {
+              require( [ 'slick', ], function() {
+                var $box = $.colorbox.element();
+
+                /* Initialize Slick */
+                $box.slick({
+                  fade: true,
+                  infinite: true,
+                  slidesToScroll: 1,
+                  slidesToShow: 1,
+                });
+              });
+            });
+        });
+      };
+
+  $.each( $( '' ), function( index, el ) {
+    initLightbox( $( el ) );
+  });
+
+});
