@@ -3,18 +3,24 @@ var BOWER_BASE = '/bower_components/';
 requirejs.config({
     baseUrl: '/resources/js/dev',
     paths: {
+      colorbox: BOWER_BASE + 'jquery-colorbox/jquery.colorbox',
       jquery: BOWER_BASE + 'jquery/dist/jquery',
       modernizr: BOWER_BASE + 'modernizr/modernizr',
       modernizrvh: BOWER_BASE + 'modernizr/feature-detects/css-vhunit',
       modernizrvw: BOWER_BASE + 'modernizr/feature-detects/css-vwunit',
       ScrollMagic: BOWER_BASE + 'ScrollMagic/scrollmagic/uncompressed/ScrollMagic',
       'ScrollMagic-gsap': BOWER_BASE + 'ScrollMagic/scrollmagic/uncompressed/plugins/animation.gsap',
+      TweenLite: BOWER_BASE + 'gsap/src/uncompressed/TweenLite',
       TweenMax: BOWER_BASE + 'gsap/src/uncompressed/TweenMax',
       TimelineMax: BOWER_BASE + 'gsap/src/uncompressed/TimelineMax',
+      slick: BOWER_BASE + 'slick.js/slick/slick',
       webfontloader: BOWER_BASE + 'webfontloader/webfontloader',
     },
 
     shim: {
+      colorbox: {
+        deps: [ 'jquery', ],
+      },
       webfontloader: {
         exports: 'WebFont',
       },
@@ -26,7 +32,10 @@ requirejs.config({
       },
       modernizrvw: {
         deps: [ 'modernizr', ]
-      }
+      },
+      slick: {
+        depts: [ 'jquery', ],
+      },
     },
 });
 
@@ -139,13 +148,19 @@ require( [
 
 });
 
-require( [ 'jquery', ], function( $ ) {
+require( [
+    'jquery',
+    'colorbox',
+    ], function( $ ) {
   var buildSlickHtml = function( $container ) {
         var $images = $container.find( '.figure' ),
             $list = $( '<ul/>' ),
 
             addListElement = function( index, el ) {
-              var $listEl = $( '<li/>' );
+              var $listEl = $( '<li/>' ),
+                  $image = $( this ).children( 'img' ).clone();
+
+              $listEl.append( $image );
 
               $list.append( $listEl );
             };
@@ -156,34 +171,47 @@ require( [ 'jquery', ], function( $ ) {
       },
 
       initLightbox = function( $container ) {
-        var $trigger = $container.find( 'button' );
+        var $trigger = $container.find( '.figure_button' ),
+            lbOpenCallback = function() {
 
-        /* Open Lightbox */
-        $trigger.on( 'click', function( e ) {
-          e.preventDefault();
+              console.log('lightbox open')
 
-          $.colorbox({
-            html: buildSlickHtml( $container ),
-          });
-
-          $( document )
-            .on( 'cbox_complete', function() {
-              require( [ 'slick', ], function() {
+              require( [
+                'slick',
+                ], function() {
+                //FIXME: This currently returns the element, colorbox is associated with. Instead we must get the box-container here, which is wrapped around the content of the lightbox.
                 var $box = $.colorbox.element();
 
                 /* Initialize Slick */
                 $box.slick({
                   fade: true,
                   infinite: true,
+                  slide: 'li',
                   slidesToScroll: 1,
                   slidesToShow: 1,
                 });
               });
-            });
-        });
+            },
+
+            openLightbox = function( e ) {
+              e.preventDefault();
+
+              var html = buildSlickHtml( $container );
+
+              $.colorbox({
+                height: '60%',
+                html: html,
+                width: '60%',
+              });
+
+              $( document ).on( 'cbox_complete', lbOpenCallback );
+            };
+
+        /* Open Lightbox */
+        $trigger.on( 'click', openLightbox );
       };
 
-  $.each( $( '' ), function( index, el ) {
+  $.each( $( '.slow-scroll-col' ), function( index, el ) {
     initLightbox( $( el ) );
   });
 

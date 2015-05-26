@@ -156,6 +156,7 @@ module.exports = function( grunt ) {
           optimize: 'uglify2',
           preserveLicenseComments: false,
           paths: {
+            colorbox:           '../../../bower_components/jquery-colorbox/jquery.colorbox',
             jquery:             '../../../bower_components/jquery/dist/jquery',
             modernizr:          '../../../bower_components/modernizr/modernizr',
             modernizrvh:        '../../../bower_components/modernizr/feature-detects/css-vhunit',
@@ -173,11 +174,15 @@ module.exports = function( grunt ) {
                                 'uncompressed/TweenLite',
             TweenMax:           '../../../bower_components/gsap/src/' +
                                 'uncompressed/TweenMax',
+            slick:              '../../../bower_components/slick.js/slick/slick',
             webfontloader:      '../../../bower_components/webfontloader/'+
                                 'webfontloader',
           },
 
           shim: {
+            colorbox: {
+              deps: [ 'jquery', ],
+            },
             webfontloader: {
               exports: 'WebFont',
             },
@@ -189,11 +194,15 @@ module.exports = function( grunt ) {
             },
             modernizrvw: {
               deps: [ 'modernizr', ]
-            }
+            },
+            slick: {
+              depts: [ 'jquery', ],
+            },
           },
 
           include: [
             'almond',
+            'colorbox',
             'jquery',
             'modernizrvh',
             'modernizrvw',
@@ -201,6 +210,7 @@ module.exports = function( grunt ) {
             'modules/image-sequence',
             'modules/slow-scroll-col',
             'ScrollMagic-gsap',
+            'slick',
             'webfontloader',
           ],
           uglify2: {
