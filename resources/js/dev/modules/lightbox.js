@@ -7,7 +7,8 @@ define(
   function( $ ) {
     var buildSlickHtml = function( $container ) {
           var $images = $container.find( '.figure' ),
-              $list = $( '<ul/>' ),
+              $list = $( '<ul/>' )
+                        .addClass( 'colorbox_slideshow' ),
 
               addListElement = function( index, el ) {
                 var $listEl = $( '<li/>' ),
@@ -24,7 +25,8 @@ define(
         },
 
         initLightbox = function( $container, options ) {
-          var $trigger = $container.find( '.figure_button' ),
+          var $innerContainer = $container.find( '.slow-scroll-col_enhance'),
+              $trigger = $innerContainer.find( '.figure_button' ),
               lbOpenCallback = function() {
                 require( [
                   'slick',
@@ -46,9 +48,10 @@ define(
               openLightbox = function( e ) {
                 e.preventDefault();
 
-                var html = buildSlickHtml( $container );
+                var html = buildSlickHtml( $innerContainer );
 
                 $.colorbox({
+                  className: 'colorbox',
                   height: '60%',
                   html: html,
                   width: '60%',

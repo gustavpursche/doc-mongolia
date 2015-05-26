@@ -1,24 +1,28 @@
 # Scroll-Reportage about Uranium Extraction in Mongolia #
 
 Used Software:
-- ScrollMagic
+- Colorbox
+- Grunt
 - GSAP
 - jQuery
+- Slick
+- ScrollMagic
 - webfontloader
-- Grunt
 
 ## Local Installation ##
 ```bash
 npm install && bower install
 
-# Build Dev Enviroment
-grunt replace:dev
-
-# Build Production Enviroment
+# Build Production Environment
 grunt build
 
+# Build Dev Environment
+grunt replace:dev
+
 # NOTE
-# After the production enviroment was built, the file-paths in /{language}/dist/index.html have to be rewritten. To do so, please run `grunt replace:dev` again
+# After the production environment was built, the file-paths in
+# /{language}/dist/index.html have to be rewritten. To do so, please
+# run `grunt replace:dev` again
 
 # Run on http://localhost:3000
 node server.js
