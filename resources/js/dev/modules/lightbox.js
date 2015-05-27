@@ -25,7 +25,6 @@ define(
 
         initLightbox = function( $container, options ) {
           var $innerContainer = $container.find( '.slow-scroll-col_enhance' ),
-              $trigger = $innerContainer.find(  ),
               lbOpenCallback = function( e ) {
                 require( [
                   'slick',
