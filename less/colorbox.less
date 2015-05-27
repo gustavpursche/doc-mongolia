@@ -1,24 +1,30 @@
 .colorbox {
   background-color: white;
-  box-shadow: 0px 0px 3px #BFBFBF;
   outline: none;
   z-index: 999;
 
   &_slideshow {
+    height: 100%;
     list-style: none;
     margin: 0;
     padding: 0;
+    width: 100%;
 
     img {
       height: auto;
+      max-height: 100%;
       width: 100%;
     }
+  }
+
+  .slick_list {
+    height: 100%;
   }
 }
 
 /* Basic Styles */
 #cboxOverlay {
-    background: rgb( 0, 0, 0 ) none repeat scroll 0% 0%;
+    background: rgb( 255, 255, 255 ) none repeat scroll 0% 0%;
     height: 100%;
     left: 0;
     overflow: hidden;

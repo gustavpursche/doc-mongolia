@@ -6,15 +6,14 @@ define(
   function( $ ) {
     var buildSlickHtml = function( $container ) {
           var $images = $container.find( '.figure' ),
-              $list = $( '<ul/>' )
+              $list = $( '<div/>' )
                         .addClass( 'colorbox_slideshow' ),
 
               addListElement = function( index, el ) {
-                var $listEl = $( '<li/>' ),
+                var $listEl = $( '<div/>' ),
                     $image = $( this ).children( 'img' ).clone();
 
                 $listEl.append( $image );
-
                 $list.append( $listEl );
               };
 
@@ -43,7 +42,6 @@ define(
                       .slick({
                         fade: true,
                         infinite: true,
-                        slide: 'li',
                         slidesToScroll: 1,
                         slidesToShow: 1,
                       });
@@ -59,11 +57,15 @@ define(
 
                       /* Options */
                       className: 'colorbox',
-                      height: '95%',
-                      opacity: .75,
+                      closeButton: false,
+                      fadeOut: 200,
+                      height: '90%',
+                      opacity: .4,
                       scalePhotos: false,
                       scrolling: false,
                       slideshow: false,
+                      speed: 200,
+                      transition: 'none',
                       width: '80%',
 
                       /* Callbacks */
