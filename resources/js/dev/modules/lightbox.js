@@ -27,37 +27,52 @@ define(
         initLightbox = function( $container, options ) {
           var $innerContainer = $container.find( '.slow-scroll-col_enhance'),
               $trigger = $innerContainer.find( '.figure_button' ),
-              lbOpenCallback = function() {
+              lbOpenCallback = function( e ) {
                 require( [
                   'slick',
                   ], function() {
-                  //FIXME: This currently returns the element, colorbox is associated with. Instead we must get the box-container here, which is wrapped around the content of the lightbox.
-                  var $box = $.colorbox.element();
+                  /* NOTE: There seems to be no way, to receive the lightbox through passed in arguments */
+                  var $box = $( '#colorbox' );
+
+                  /* activeElement can also be the <body/>, when clicking outside of the lightbox */
+                  if( !$box.is( 'div' ) ) {
+                    return;
+                  }
 
                   /* Initialize Slick */
-                  $box.slick({
-                    fade: true,
-                    infinite: true,
-                    slide: 'li',
-                    slidesToScroll: 1,
-                    slidesToShow: 1,
-                  });
+                  $box
+                    .find( '.colorbox_slideshow' )
+                      .slick({
+                        fade: true,
+                        infinite: true,
+                        slide: 'li',
+                        slidesToScroll: 1,
+                        slidesToShow: 1,
+                      });
                 });
               },
 
               openLightbox = function( e ) {
                 e.preventDefault();
 
-                var html = buildSlickHtml( $innerContainer );
+                var lightboxOptions = {
+                      /* Content */
+                      html: buildSlickHtml( $innerContainer ),
 
-                $.colorbox({
-                  className: 'colorbox',
-                  height: '60%',
-                  html: html,
-                  width: '60%',
-                });
+                      /* Options */
+                      className: 'colorbox',
+                      height: '95%',
+                      opacity: .75,
+                      scalePhotos: false,
+                      scrolling: false,
+                      slideshow: false,
+                      width: '80%',
 
-                $( document ).on( 'cbox_complete', lbOpenCallback );
+                      /* Callbacks */
+                      onComplete: lbOpenCallback,
+                    };
+
+                $.colorbox( lightboxOptions );
               };
 
           /* Open Lightbox */
