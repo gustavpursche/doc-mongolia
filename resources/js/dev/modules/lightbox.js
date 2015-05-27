@@ -24,52 +24,47 @@ define(
 
         initLightbox = function( $container, options ) {
           var $innerContainer = $container.find( '.slow-scroll-col_enhance' ),
-              lbOpenCallback = function( e ) {
-                require( [
-                  'slick',
-                  ], function() {
-                  /* NOTE: There seems to be no way, to receive the lightbox through passed in arguments */
-                  var $box = $( '#colorbox' );
-
-                  /* activeElement can also be the <body/>, when clicking outside of the lightbox */
-                  if( !$box.is( 'div' ) ) {
-                    return;
-                  }
-
-                  /* Initialize Slick */
-                  $box
-                    .find( '.colorbox_slideshow' )
-                      .slick({
-                        fade: true,
-                        infinite: true,
-                        slidesToScroll: 1,
-                        slidesToShow: 1,
-                      });
-                });
-              },
-
               openLightbox = function( e ) {
                 e.preventDefault();
 
-                var lightboxOptions = {
+                var transitionSpeed = 150,
+                    complete = function() {
+                      require( [
+                        'slick',
+                        ], function() {
+
+                        /* NOTE: There seems to be no way, to receive the lightbox through passed in arguments */
+                        $( '#colorbox' )
+                          .find( '.colorbox_slideshow' )
+                            .slick({
+                              fade: true,
+                              infinite: true,
+                              slidesToScroll: 1,
+                              slidesToShow: 1,
+                            });
+                      });
+
+                    },
+
+                    lightboxOptions = {
                       /* Content */
                       html: buildSlickHtml( $innerContainer ),
 
                       /* Options */
                       className: 'colorbox',
                       closeButton: false,
-                      fadeOut: 200,
+                      fadeOut: transitionSpeed,
                       height: '90%',
                       opacity: .4,
                       scalePhotos: false,
                       scrolling: false,
                       slideshow: false,
-                      speed: 200,
+                      speed: transitionSpeed,
                       transition: 'none',
                       width: '80%',
 
                       /* Callbacks */
-                      onComplete: lbOpenCallback,
+                      onComplete: complete,
                     };
 
                 require( [
