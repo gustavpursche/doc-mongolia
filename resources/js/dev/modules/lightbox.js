@@ -55,7 +55,7 @@ define(
                       closeButton: false,
                       fadeOut: transitionSpeed,
                       height: '90%',
-                      opacity: .4,
+                      opacity: .8,
                       scalePhotos: false,
                       scrolling: false,
                       slideshow: false,

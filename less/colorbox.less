@@ -20,6 +20,30 @@
   .slick_list {
     height: 100%;
   }
+
+  .slick-prev {
+    left: 0;
+  }
+
+  .slick-next {
+    right: 0;
+  }
+
+  .slick-prev,
+  .slick-next {
+    background-color: rgb( 255, 255, 255 );
+    height: 100%;
+    margin-top: 0;
+    opacity: 0;
+    top: 0;
+    transition: opacity .5s;
+    width: 50%;
+
+    &:hover,
+    &:focus {
+      opacity: .4;
+    }
+  }
 }
 
 /* Basic Styles */
