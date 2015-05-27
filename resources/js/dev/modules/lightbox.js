@@ -24,10 +24,12 @@ define(
 
         initLightbox = function( $container, options ) {
           var $innerContainer = $container.find( '.slow-scroll-col_enhance' ),
+              linkIndex,
               openLightbox = function( e ) {
                 e.preventDefault();
 
-                var transitionSpeed = 150,
+                var $target = $( this ),
+                    transitionSpeed = 150,
                     complete = function() {
                       require( [
                         'slick',
@@ -37,11 +39,13 @@ define(
                         $( '#colorbox' )
                           .find( '.colorbox_slideshow' )
                             .slick({
+                              initialSlide: linkIndex,
                               fade: true,
                               infinite: true,
                               slidesToScroll: 1,
                               slidesToShow: 1,
                             });
+
                       });
 
                     },
@@ -70,6 +74,8 @@ define(
                 require( [
                   'colorbox',
                   ], function() {
+                  linkIndex = $target
+                    .closest( '.slow-scroll-col_figure' ).index();
                   $.colorbox( lightboxOptions );
                 });
 
