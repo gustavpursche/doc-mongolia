@@ -78,8 +78,8 @@ define(
           /* Open Lightbox */
           $innerContainer
             .on( 'click.lightbox',
-                  '.figure_button',
-                  openLightbox );
+                 '.figure_button',
+                 openLightbox );
         };
 
     return initLightbox;
