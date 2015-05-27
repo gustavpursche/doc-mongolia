@@ -1,7 +1,6 @@
 define(
   [
     'jquery',
-    'colorbox',
   ],
 
   function( $ ) {
@@ -72,7 +71,12 @@ define(
                       onComplete: lbOpenCallback,
                     };
 
-                $.colorbox( lightboxOptions );
+                require( [
+                  'colorbox',
+                  ], function() {
+                  $.colorbox( lightboxOptions );
+                });
+
               };
 
           /* Open Lightbox */
