@@ -22,21 +22,25 @@
   }
 
   .slick-prev {
+    background-image: data-uri( '../resources/icon/arrow-left.svg' );
     left: 0;
   }
 
   .slick-next {
+    background-image: data-uri( '../resources/icon/arrow-right.svg' );
     right: 0;
   }
 
   .slick-prev,
   .slick-next {
-    background-color: rgb( 255, 255, 255 );
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 60px 60px;
     height: 100%;
     margin-top: 0;
     opacity: 0;
     top: 0;
-    transition: opacity .5s;
+    transition: opacity .3s;
     width: 50%;
 
     &:hover,
@@ -45,7 +49,7 @@
     }
 
     &:active {
-      opacity: .6;
+      opacity: .8;
     }
   }
 }
