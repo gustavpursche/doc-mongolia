@@ -24,8 +24,8 @@ define(
         },
 
         initLightbox = function( $container, options ) {
-          var $innerContainer = $container.find( '.slow-scroll-col_enhance'),
-              $trigger = $innerContainer.find( '.figure_button' ),
+          var $innerContainer = $container.find( '.slow-scroll-col_enhance' ),
+              $trigger = $innerContainer.find(  ),
               lbOpenCallback = function( e ) {
                 require( [
                   'slick',
@@ -80,7 +80,10 @@ define(
               };
 
           /* Open Lightbox */
-          $trigger.on( 'click', openLightbox );
+          $innerContainer
+            .on( 'click.lightbox',
+                  '.figure_button',
+                  openLightbox );
         };
 
     return initLightbox;
