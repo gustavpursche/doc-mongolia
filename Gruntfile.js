@@ -70,6 +70,7 @@ module.exports = function( grunt ) {
           'resources/icon/earth.svg': 'resources/icon/earth.svg',
           'resources/icon/search-plus.svg': 'resources/icon/search-plus.svg',
           'resources/icon/sky.svg': 'resources/icon/sky.svg',
+          'resources/icon/times.svg': 'resources/icon/times.svg',
           'resources/icon/tower.svg': 'resources/icon/tower.svg',
           'resources/icon/well.svg': 'resources/icon/well.svg',
 

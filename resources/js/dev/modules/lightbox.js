@@ -6,8 +6,7 @@ define(
   function( $ ) {
     var buildSlideshowMarkup = function( $container ) {
           var $images = $container
-                          .find( '.sidebar' )
-                            .children( '.sidebar_figure' ),
+                          .find( '.sidebar_figure' ),
               $wrap = $( '<div/>' )
                         .addClass( 'colorbox_slideshow' ),
 
@@ -22,11 +21,11 @@ define(
           $.each( $images, addListElement );
 
           /* Return outerHtml of $wrap */
-          return $( '<div/>' ).append( $list ).html();
+          return $( '<div/>' ).append( $wrap ).html();
         },
 
         init = function( $container, options ) {
-          var $innerContainer = $container.find( '.slow-scroll-col_enhance' ),
+          var $innerContainer = $container.find( '.sidebar' ),
               linkIndex,
               openLightbox = function( e ) {
                 e.preventDefault();
@@ -34,6 +33,19 @@ define(
                 var $target = $( this ),
                     transitionSpeed = 150,
                     complete = function() {
+                      var fixCloseButton = function() {
+                          var $btn = $( '#cboxClose' ),
+                              btnText = $btn.text(),
+                              $text = $( '<span/>' )
+                                        .addClass( 'u-is-accessible-hidden')
+                                        .text( btnText );
+
+                          $btn
+                            .addClass( 'icon icon--times' )
+                            .text( '' )
+                            .append( $text );
+                        };
+
                       require( [
                         'slick',
                         ], function() {
@@ -51,6 +63,8 @@ define(
 
                       });
 
+                      /* Markup Fixes */
+                      fixCloseButton();
                     },
 
                     lightboxOptions = {
@@ -59,7 +73,6 @@ define(
 
                       /* Options */
                       className: 'colorbox',
-                      closeButton: false,
                       fadeOut: transitionSpeed,
                       height: '90%',
                       opacity: .8,
@@ -78,7 +91,7 @@ define(
                   'colorbox',
                   ], function() {
                   linkIndex = $target
-                    .closest( '.slow-scroll-col_figure' ).index();
+                    .closest( '.sidebar_figure' ).index();
                   $.colorbox( lightboxOptions );
                 });
 
