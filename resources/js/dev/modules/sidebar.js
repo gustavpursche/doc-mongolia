@@ -9,7 +9,7 @@ define(
     var init = function( $container ) {
       var container = $container.get( 0 ),
           controller = new ScrollMagic.Controller(),
-          $slowCol = $container.find( '.slow-scroll-col_enhance' ),
+          $slowCol = $container.find( '.sidebar' ),
           fadeIn = TweenLite.fromTo( $slowCol,
                                      1,
                                      {
