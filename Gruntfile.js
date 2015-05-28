@@ -98,19 +98,6 @@ module.exports = function( grunt ) {
               },
             },
             {
-              match: /\<link .* href=\".*main.css\" \/>/g,
-              replacement: '',
-            },
-            {
-              match: '{{css_inline}}',
-              replacement: function() {
-                var fs = require( 'fs' );
-
-                var data = fs.readFileSync( './resources/css/dist/main.css' );
-                return data.toString();
-              },
-            },
-            {
               match: '{{url_prefix}}',
               replacement: 'https://cdn.jib-collective.net/mongolei',
             }
