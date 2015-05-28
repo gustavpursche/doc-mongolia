@@ -18,6 +18,8 @@ module.exports = function( grunt ) {
       dist: {
         src: [
           'bower_components/normalize.css/normalize.css',
+          'bower_components/slick.js/slick/slick.css',
+          'bower_components/slick.js/slick/slick-theme.css',
           'resources/css/dev/main.css',
         ],
         dest: 'resources/css/dist/main.css',
@@ -63,10 +65,15 @@ module.exports = function( grunt ) {
       },
       dist: {
         files: {
+          'resources/icon/arrow-left.svg': 'resources/icon/arrow-left.svg',
+          'resources/icon/arrow-right.svg': 'resources/icon/arrow-right.svg',
           'resources/icon/earth.svg': 'resources/icon/earth.svg',
+          'resources/icon/search-plus.svg': 'resources/icon/search-plus.svg',
           'resources/icon/sky.svg': 'resources/icon/sky.svg',
-          'resources/icon/well.svg': 'resources/icon/well.svg',
+          'resources/icon/times.svg': 'resources/icon/times.svg',
           'resources/icon/tower.svg': 'resources/icon/tower.svg',
+          'resources/icon/well.svg': 'resources/icon/well.svg',
+
           'resources/logo/greenpeace-magazine-logo.svg': 'resources/logo/greenpeace-magazine-logo.svg',
         }
       }
@@ -142,6 +149,7 @@ module.exports = function( grunt ) {
           optimize: 'uglify2',
           preserveLicenseComments: false,
           paths: {
+            colorbox:           '../../../bower_components/jquery-colorbox/jquery.colorbox',
             jquery:             '../../../bower_components/jquery/dist/jquery',
             modernizr:          '../../../bower_components/modernizr/modernizr',
             modernizrvh:        '../../../bower_components/modernizr/feature-detects/css-vhunit',
@@ -159,11 +167,15 @@ module.exports = function( grunt ) {
                                 'uncompressed/TweenLite',
             TweenMax:           '../../../bower_components/gsap/src/' +
                                 'uncompressed/TweenMax',
+            slick:              '../../../bower_components/slick.js/slick/slick',
             webfontloader:      '../../../bower_components/webfontloader/'+
                                 'webfontloader',
           },
 
           shim: {
+            colorbox: {
+              deps: [ 'jquery', ],
+            },
             webfontloader: {
               exports: 'WebFont',
             },
@@ -175,18 +187,24 @@ module.exports = function( grunt ) {
             },
             modernizrvw: {
               deps: [ 'modernizr', ]
-            }
+            },
+            slick: {
+              depts: [ 'jquery', ],
+            },
           },
 
           include: [
             'almond',
+            'colorbox',
             'jquery',
             'modernizrvh',
             'modernizrvw',
             'modules/fadeout',
             'modules/image-sequence',
-            'modules/slow-scroll-col',
+            'modules/lightbox',
+            'modules/sidebar',
             'ScrollMagic-gsap',
+            'slick',
             'webfontloader',
           ],
           uglify2: {

@@ -3,18 +3,24 @@ var BOWER_BASE = '/bower_components/';
 requirejs.config({
     baseUrl: '/resources/js/dev',
     paths: {
+      colorbox: BOWER_BASE + 'jquery-colorbox/jquery.colorbox',
       jquery: BOWER_BASE + 'jquery/dist/jquery',
       modernizr: BOWER_BASE + 'modernizr/modernizr',
       modernizrvh: BOWER_BASE + 'modernizr/feature-detects/css-vhunit',
       modernizrvw: BOWER_BASE + 'modernizr/feature-detects/css-vwunit',
       ScrollMagic: BOWER_BASE + 'ScrollMagic/scrollmagic/uncompressed/ScrollMagic',
       'ScrollMagic-gsap': BOWER_BASE + 'ScrollMagic/scrollmagic/uncompressed/plugins/animation.gsap',
+      TweenLite: BOWER_BASE + 'gsap/src/uncompressed/TweenLite',
       TweenMax: BOWER_BASE + 'gsap/src/uncompressed/TweenMax',
       TimelineMax: BOWER_BASE + 'gsap/src/uncompressed/TimelineMax',
+      slick: BOWER_BASE + 'slick.js/slick/slick',
       webfontloader: BOWER_BASE + 'webfontloader/webfontloader',
     },
 
     shim: {
+      colorbox: {
+        deps: [ 'jquery', ],
+      },
       webfontloader: {
         exports: 'WebFont',
       },
@@ -26,7 +32,10 @@ requirejs.config({
       },
       modernizrvw: {
         deps: [ 'modernizr', ]
-      }
+      },
+      slick: {
+        depts: [ 'jquery', ],
+      },
     },
 });
 
@@ -89,9 +98,12 @@ require( [ 'jquery', ], function( $ ) {
           return;
         }
 
-        require( [ 'modules/' + module ], function( module ) {
-          module( $section, options );
+        $.each( module.split(','), function loadModule( index, localModule ) {
+          require( [ 'modules/' + localModule ], function( localModule ) {
+            localModule( $section, options );
+          });
         });
+
       };
 
   $(function() {
@@ -136,5 +148,4 @@ require( [
       });
     }
   });
-
 });

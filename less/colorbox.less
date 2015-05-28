@@ -1,0 +1,82 @@
+.colorbox {
+  background-color: white;
+  outline: none;
+  z-index: 999;
+
+  &_slideshow {
+    height: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    img {
+      height: auto;
+      max-height: 100%;
+      width: 100%;
+    }
+  }
+
+  .slick_list {
+    height: 100%;
+  }
+
+  .slick-prev {
+    background-image: data-uri( '../resources/icon/arrow-left.svg' );
+    left: 0;
+  }
+
+  .slick-next {
+    background-image: data-uri( '../resources/icon/arrow-right.svg' );
+    right: 0;
+  }
+
+  .slick-prev,
+  .slick-next {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 60px 60px;
+    height: 100%;
+    margin-top: 0;
+    opacity: 0;
+    top: 0;
+    transition: opacity .3s;
+    width: 50%;
+
+    &:hover,
+    &:focus {
+      opacity: .4;
+    }
+
+    &:active {
+      opacity: .8;
+    }
+  }
+}
+
+/* Basic Styles */
+#cbox {
+  &Overlay {
+    background: rgb( 255, 255, 255 ) none repeat scroll 0% 0%;
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 888;
+  }
+
+  &Close {
+    background-color: rgb( 255, 255, 255 );
+    border: none;
+    position: absolute;
+    right: 0;
+    top: -25px;
+
+    &:active {
+      border: none;
+    }
+  }
+}
+
