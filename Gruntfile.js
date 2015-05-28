@@ -65,10 +65,14 @@ module.exports = function( grunt ) {
       },
       dist: {
         files: {
+          'resources/icon/arrow-left.svg': 'resources/icon/arrow-left.svg',
+          'resources/icon/arrow-right.svg': 'resources/icon/arrow-right.svg',
           'resources/icon/earth.svg': 'resources/icon/earth.svg',
+          'resources/icon/search-plus.svg': 'resources/icon/search-plus.svg',
           'resources/icon/sky.svg': 'resources/icon/sky.svg',
-          'resources/icon/well.svg': 'resources/icon/well.svg',
           'resources/icon/tower.svg': 'resources/icon/tower.svg',
+          'resources/icon/well.svg': 'resources/icon/well.svg',
+
           'resources/logo/greenpeace-magazine-logo.svg': 'resources/logo/greenpeace-magazine-logo.svg',
         }
       }
