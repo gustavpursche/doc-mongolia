@@ -149,16 +149,20 @@ module.exports = function( grunt ) {
           optimize: 'uglify2',
           preserveLicenseComments: false,
           paths: {
-            colorbox:           '../../../bower_components/jquery-colorbox/jquery.colorbox',
+            colorbox:           '../../../bower_components/jquery-colorbox/' +
+                                'jquery.colorbox',
             jquery:             '../../../bower_components/jquery/dist/jquery',
             modernizr:          '../../../bower_components/modernizr/modernizr',
-            modernizrvh:        '../../../bower_components/modernizr/feature-detects/css-vhunit',
-            modernizrvw:        '../../../bower_components/modernizr/feature-detects/css-vwunit',
+            modernizrvh:        '../../../bower_components/modernizr/' +
+                                'feature-detects/css-vhunit',
+            modernizrvw:        '../../../bower_components/modernizr/' +
+                                'feature-detects/css-vwunit',
             almond:             '../../../bower_components/almond/almond',
             ScrollMagic:        '../../../bower_components/ScrollMagic/' +
                                 'scrollmagic/uncompressed/ScrollMagic',
             'ScrollMagic-gsap': '../../../bower_components/ScrollMagic/' +
-                                'scrollmagic/uncompressed/plugins/animation.gsap',
+                                'scrollmagic/uncompressed/plugins/' +
+                                'animation.gsap',
             TimelineLite:       '../../../bower_components/gsap/src/' +
                                 'uncompressed/TimelineLite',
             TimelineMax:        '../../../bower_components/gsap/src/' +
@@ -167,7 +171,8 @@ module.exports = function( grunt ) {
                                 'uncompressed/TweenLite',
             TweenMax:           '../../../bower_components/gsap/src/' +
                                 'uncompressed/TweenMax',
-            slick:              '../../../bower_components/slick.js/slick/slick',
+            slick:              '../../../bower_components/slick.js/slick/' +
+                                'slick',
             webfontloader:      '../../../bower_components/webfontloader/'+
                                 'webfontloader',
           },
