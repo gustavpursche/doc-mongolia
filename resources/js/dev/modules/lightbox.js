@@ -4,25 +4,28 @@ define(
   ],
 
   function( $ ) {
-    var buildSlickHtml = function( $container ) {
-          var $images = $container.find( '.figure' ),
-              $list = $( '<div/>' )
+    var buildSlideshowMarkup = function( $container ) {
+          var $images = $container
+                          .find( '.sidebar' )
+                            .children( '.sidebar_figure' ),
+              $wrap = $( '<div/>' )
                         .addClass( 'colorbox_slideshow' ),
 
               addListElement = function( index, el ) {
-                var $listEl = $( '<div/>' ),
+                var $child = $( '<div/>' ),
                     $image = $( this ).children( 'img' ).clone();
 
-                $listEl.append( $image );
-                $list.append( $listEl );
+                $child.append( $image );
+                $wrap.append( $child );
               };
 
           $.each( $images, addListElement );
 
+          /* Return outerHtml of $wrap */
           return $( '<div/>' ).append( $list ).html();
         },
 
-        initLightbox = function( $container, options ) {
+        init = function( $container, options ) {
           var $innerContainer = $container.find( '.slow-scroll-col_enhance' ),
               linkIndex,
               openLightbox = function( e ) {
@@ -52,7 +55,7 @@ define(
 
                     lightboxOptions = {
                       /* Content */
-                      html: buildSlickHtml( $innerContainer ),
+                      html: buildSlideshowMarkup( $innerContainer ),
 
                       /* Options */
                       className: 'colorbox',
@@ -88,6 +91,6 @@ define(
                  openLightbox );
         };
 
-    return initLightbox;
+    return init;
   }
 );
