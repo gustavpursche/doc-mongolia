@@ -81,14 +81,19 @@
     </div>
     -->
 
-    <header class="header">
+    <header class="header js--enhance"
+            data-module="header">
 
-      <div class="header_video js--enhance"
-           data-module="fadeout">
+      <div class="loader header_loader">
+        <span class="u-is-accessible-hidden">Laden ...</span>
+      </div>
+
+      <div class="header_video">
         <video class="video video--fullsize"
                preload="auto"
                autoplay
-               muted>
+               muted
+               loop>
           <source type="video/mp4"
                   src="{{url_prefix}}/assets/Mongolei-001_1.mp4">
         </video>
@@ -136,6 +141,10 @@
           Im Bezirk Ulaanbadrakh haben die Nomaden noch ein ganz anderes Problem: Sie berichten vom schlechten Gesundheitszustand ihrer Tiere, von rätselhaften Fehlgeburten und Missbildungen.
         </figcaption>
       </figure>
+
+      <div class="loader loader--black image-sequence_loader u-center-absolute">
+        <span class="u-is-accessible-hidden">Laden ...</span>
+      </div>
     </section>
 
     <section class="section section--with-margin js--enhance section--limited richtext u-clearfix"

@@ -2,22 +2,20 @@ define(
   [
     'jquery',
     'ScrollMagic',
-    'ScrollMagic-gsap',
   ],
 
   function( $, ScrollMagic ) {
     var init = function( $container ) {
       var container = $container.get( 0 ),
-          tweenTarget = {
-            opacity: .2,
-          }
-          fadeOut = TweenLite.to( container, 1, tweenTarget );
+          removeLodaer = function() {
+            $container.find( '.header_loader' ).remove();
+          };
 
       new ScrollMagic.Scene({
           triggerElement: container,
           triggerHook: 'onLeave',
-          duration: '150%',
-      }).setTween( fadeOut )
+          duration: '100%',
+      }).on( 'leave', removeLodaer )
         .addTo( new ScrollMagic.Controller() );
     };
 

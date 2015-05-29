@@ -204,7 +204,6 @@ module.exports = function( grunt ) {
             'jquery',
             'modernizrvh',
             'modernizrvw',
-            'modules/fadeout',
             'modules/image-sequence',
             'modules/lightbox',
             'modules/sidebar',

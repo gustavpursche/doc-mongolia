@@ -52,6 +52,7 @@
       top: 0;
       height: 100%;
       width: auto;
+      z-index: 20;
     }
   }
 
@@ -89,6 +90,15 @@
   &_published {
     font-size: .9rem;
     margin-top: 2.5rem;
+  }
+
+  &_loader {
+    left: 50%;
+    margin-left: -3rem;
+    position: absolute;
+    top: 10rem;
+    transform: translateX( -50% );
+    z-index: 10;
   }
 }
 

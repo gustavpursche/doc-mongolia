@@ -45,6 +45,10 @@ define(
             $.each( $images.find( 'video' ), initializeVideo );
           },
 
+          restoreSection = function( e ) {
+            $container.find( '.image-sequence_loader' ).remove();
+          },
+
           /* add animation to a single image */
           addImageAnimation = function() {
             var $figure = $( this ),
@@ -134,6 +138,7 @@ define(
           offset: 150,
       }).setTween( fadeIn )
         .on( 'enter', initSection )
+        .on( 'leave', restoreSection )
         .addTo( controller  );
 
       /* handle blend of sequence-elements */
