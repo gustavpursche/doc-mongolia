@@ -40,7 +40,7 @@
     width: 100%;
   }
 
-  .figure {
+  .image-sequence_figure {
     background-color: white;
     height: 100%;
     left: 0;
@@ -60,6 +60,20 @@
       min-height: 100%;
       position: relative;
       width: auto;
+    }
+  }
+
+  .image-sequence_figure--fullscreen {
+    padding: 0;
+
+    img,
+    video {
+      height: auto;
+      max-height: none;
+      max-width: none;
+      min-height: 100%;
+      min-width: 100%;
+      width: 100%;
     }
   }
 
