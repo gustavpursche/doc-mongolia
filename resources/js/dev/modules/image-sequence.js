@@ -46,7 +46,7 @@ define(
           },
 
           restoreSection = function( e ) {
-            $container.find( '.image-sequence_loader' ).remove();
+            $container.find( '.figure_loader' ).remove();
           },
 
           /* add animation to a single image */
