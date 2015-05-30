@@ -4,6 +4,7 @@ module.exports = function( grunt ) {
 
   grunt.initConfig({
     aws: grunt.file.readJSON( 'aws.json' ),
+    pkg: grunt.file.readJSON( 'package.json' ),
 
     aws_s3: {
       options: {
@@ -214,7 +215,7 @@ module.exports = function( grunt ) {
             {
               match: /\<script data-main=\".*\"\>\<\/script\>/g,
               replacement: '<script src="' +
-                           '{{url_prefix}}/resources/js/dist/index.js' +
+                           '{{url_prefix}}/resources/js/dist/index.js{{v}}' +
                            '" type="text/javascript" async></script>',
             },
           ]
@@ -240,6 +241,10 @@ module.exports = function( grunt ) {
               match: '{{url_prefix}}',
               replacement: 'https://cdn.jib-collective.net/mongolei',
             },
+            {
+              match: '{{v}}',
+              replacement: '?v=<%= pkg.version %>',
+            }
           ]
         },
 
@@ -261,6 +266,10 @@ module.exports = function( grunt ) {
           patterns: [
             {
               match: '{{url_prefix}}',
+              replacement: '',
+            },
+            {
+              match: '{{v}}',
               replacement: '',
             },
           ]
