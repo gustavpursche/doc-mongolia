@@ -87,7 +87,7 @@ module.exports = function( grunt ) {
             'resources/js/dev/*.js',
           ]
         },
-      }
+      },
     },
 
     replace: {
