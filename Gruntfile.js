@@ -91,7 +91,7 @@ module.exports = function( grunt ) {
     },
 
     replace: {
-      dist: {
+      jib_cdn: {
         options: {
           prefix: '',
           patterns: [
@@ -279,7 +279,7 @@ module.exports = function( grunt ) {
     'cssmin',
     'svgmin:dist',
     'requirejs',
-    'replace:dist',
+    'replace:jib_cdn',
     'htmlmin:dist',
   ]);
 
