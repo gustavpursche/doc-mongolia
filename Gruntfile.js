@@ -79,6 +79,21 @@ module.exports = function( grunt ) {
       }
     },
 
+    jshint: {
+      options: {
+      },
+      with_overrides: {
+        options: {
+        },
+        files: {
+          src: [
+            'resources/js/dev/**/*.js',
+            'resources/js/dev/*.js',
+          ]
+        },
+      }
+    },
+
     replace: {
       dist: {
         options: {

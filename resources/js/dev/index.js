@@ -75,7 +75,7 @@ require( [
                   $( this )
                     .css({
                       height: windowHeight,
-                    })
+                    });
                 };
 
             $.each( selectors, updateElement );

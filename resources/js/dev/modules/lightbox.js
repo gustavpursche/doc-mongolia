@@ -75,7 +75,7 @@ define(
                       className: 'colorbox',
                       fadeOut: transitionSpeed,
                       height: '90%',
-                      opacity: .8,
+                      opacity: 0.8,
                       scalePhotos: false,
                       scrolling: false,
                       slideshow: false,

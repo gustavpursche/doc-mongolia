@@ -8,7 +8,7 @@ define(
   function( $, ScrollMagic ) {
     var init = function( $container ) {
       var imageSequence = new TimelineLite(),
-          controller = controller = new ScrollMagic.Controller(),
+          controller = new ScrollMagic.Controller(),
           container = $container.get( 0 ),
           containerWidth = $container.outerWidth(),
           $images = $container.children( '.image-sequence_figure' ),
@@ -62,10 +62,10 @@ define(
                 },
                 nextDefaultsTo = {
                   opacity: 1,
-                }
+                },
                 imageAnimation = new TimelineLite(),
                 captionLeft = ( containerWidth - captionWidth ) / 2,
-                captionFadeTime = .8,
+                captionFadeTime = 0.8,
                 imageFadeTime = 1.5,
                 captionFadeIn = TweenLite.to( $caption,
                                               captionFadeTime,
@@ -96,7 +96,7 @@ define(
                                              imageFadeTime,
                                              $.extend( {}, defaultsTo, dataTo ), {
                                                ease: Power4.easeOut,
-                                               y: 0
+                                               y: 0,
                                              } );
 
             if( $caption.length ) {
