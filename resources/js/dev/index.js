@@ -125,20 +125,27 @@ require( [
   ],
   function( $, utils ) {
 
+    var adoptHeader = function() {
+      var $header = $( '.header' ),
+          $fallbackImage = $header.children( '.header_fallback-image' );
+
+      $header.addClass( 'header--no-video' );
+      utils.loadImage( $fallbackImage.children( 'img' ) );
+    };
+
   $(function() {
 
-    /* detect iOs devices to hide the header */
-    if( !utils.isIosDevice() ) {
+    /* detect iOs devices and video capabilities to hide the header */
+    if( utils.canPlayVideo( 'mp4' ) || !utils.isIosDevice() ) {
       return;
     }
 
-    /* detect video capabilities */
-    if( utils.canPlayVideo( 'mp4' ) ) {
-      return;
-    }
+    adoptHeader();
 
-    $( '.header' ).addClass( 'header--no-video' );
+    /*
+    NOTE: Don't need this, until the service navigation was added back
     $( '.service' ).addClass( 'service--relative' );
+    */
   });
 
 /* Tweens were not applied - this is the minimal JS, which will be executed

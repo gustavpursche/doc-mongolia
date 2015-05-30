@@ -30,6 +30,10 @@
     text-shadow: none;
   }
 
+  &--no-video &_fallback-image {
+    display: block;
+  }
+
   &_content,
   &_mobile-headline {
     background-image: linear-gradient( to bottom, transparent 0%, #090906 80% );
@@ -101,6 +105,17 @@
     top: 10rem;
     transform: translateX( -50% );
     z-index: 10;
+  }
+
+  &_fallback-image {
+    display: none;
+
+    img {
+      height: auto;
+      position: relative;
+      width: 100%;
+      z-index: 20;
+    }
   }
 }
 
