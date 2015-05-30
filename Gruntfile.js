@@ -458,6 +458,7 @@ module.exports = function( grunt ) {
   ]);
 
   grunt.registerTask( 'release', [
+    'build',
     'aws_s3:dist',
     'cloudfront:dist',
   ]);
