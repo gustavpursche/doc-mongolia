@@ -26,6 +26,45 @@ module.exports = function( grunt ) {
       },
     },
 
+    compress: {
+      html: {
+        options: {
+          mode: 'gzip',
+          level: 9,
+        },
+        expand: true,
+        cwd: 'de/dist',
+        src: [
+          '*.html',
+        ],
+        dest: 'de/dist/gzip',
+      },
+      js: {
+        options: {
+          mode: 'gzip',
+          level: 9,
+        },
+        expand: true,
+        cwd: 'resources/js/dist',
+        src: [
+          '*.js',
+        ],
+        dest: 'resources/js/dist/gzip',
+      },
+      css: {
+        options: {
+          mode: 'gzip',
+          level: 9,
+        },
+        expand: true,
+        cwd: 'resources/css/dist',
+        src: [
+          '*.css',
+        ],
+        dest: 'resources/css/dist/gzip',
+      },
+    },
+
     cssmin: {
       options: {
         keepSpecialComments: false,
@@ -121,12 +160,6 @@ module.exports = function( grunt ) {
           prefix: '',
           patterns: [
             {
-              match: /\<script data-main=\".*\"\>\<\/script\>/g,
-              replacement: '<script src="' +
-                           '{{url_prefix}}/resources/js/dist/index.js' +
-                           '" type="text/javascript" async></script>',
-            },
-            {
               match: '{{url_prefix}}',
               replacement: 'https://cdn.jib-collective.net/mongolei',
             },
@@ -152,7 +185,7 @@ module.exports = function( grunt ) {
             {
               match: '{{url_prefix}}',
               replacement: '',
-            }
+            },
           ]
         },
 
@@ -301,6 +334,7 @@ module.exports = function( grunt ) {
     'replace:js',
     'replace:jib_cdn',
     'htmlmin:dist',
+    'compress',
   ]);
 
 };
