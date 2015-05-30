@@ -213,6 +213,7 @@ module.exports = function( grunt ) {
             'almond',
             'colorbox',
             'jquery',
+            'utils',
             'modernizrvh',
             'modernizrvw',
             'modules/header',

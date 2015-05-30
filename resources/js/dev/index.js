@@ -124,6 +124,7 @@ require( [
   'utils',
   ],
   function( $, utils ) {
+
   $(function() {
 
     /* detect iOs devices to hide the header */
@@ -140,12 +141,22 @@ require( [
     $( '.service' ).addClass( 'service--relative' );
   });
 
-  /* play all videos, when the tweens are not applied */
+/* Tweens were not applied - this is the minimal JS, which will be executed
+   then */
   $(function() {
-    if( $( window ).width() < 1000 ) {
-      $.each( $( '.video' ), function() {
-        this.play();
-      });
+    if( $( window ).width() >= 1000 ) {
+      return;
     }
+
+    /* play all videos, when the tweens are not applied */
+    $.each( $( '.video' ), function() {
+      this.play();
+    });
+
+    /* lazyload images */
+    $.each( $( '.js--lazyload' ), function() {
+      utils.loadImage( $( this ) );
+    });
+
   });
 });

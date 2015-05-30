@@ -1,11 +1,12 @@
 define(
   [
     'jquery',
+    'utils',
     'ScrollMagic',
     'ScrollMagic-gsap',
   ],
 
-  function( $, ScrollMagic ) {
+  function( $, utils, ScrollMagic ) {
     var init = function( $container ) {
       var imageSequence = new TimelineLite(),
           controller = new ScrollMagic.Controller(),
@@ -39,10 +40,17 @@ define(
 
                   /* only initialize the Video once, instead of every scroll */
                   $video.data( 'played', true );
+                },
+
+                loadImage = function() {
+                  utils.loadImage( $( this ).children( 'img' ) );
                 };
 
             /* start load & play of every video in this section */
             $.each( $images.find( 'video' ), initializeVideo );
+
+            /* lazy loading of images */
+            $.each( $images, loadImage );
           },
 
           restoreSection = function( e ) {
