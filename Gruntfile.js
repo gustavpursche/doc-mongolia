@@ -49,6 +49,7 @@ module.exports = function( grunt ) {
         },
         files: {
           'de/dist/index.html': 'de/dist/index.html',
+          'en/dist/index.html': 'en/dist/index.html',
         }
       },
     },
@@ -124,6 +125,14 @@ module.exports = function( grunt ) {
             ],
             dest: 'de/dist/',
           },
+          {
+            expand: true,
+            flatten: true,
+            src: [
+              'en/dev/index.html',
+            ],
+            dest: 'en/dist/',
+          },
         ],
       },
 
@@ -146,6 +155,14 @@ module.exports = function( grunt ) {
               'de/dev/index.html',
             ],
             dest: 'de/dist/',
+          },
+          {
+            expand: true,
+            flatten: true,
+            src: [
+              'en/dev/index.html',
+            ],
+            dest: 'en/dist/',
           },
         ],
       },
@@ -261,6 +278,7 @@ module.exports = function( grunt ) {
       html: {
         files: [
           'de/dev/index.html',
+          'en/dev/index.html',
         ],
         tasks: [
           'replace:dev',

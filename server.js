@@ -10,4 +10,12 @@ app.get( '/', function (req, res) {
   res.sendFile( path.join( __dirname, '/de/dist/index.html' ) );
 });
 
+app.get( '/de', function (req, res) {
+  res.sendFile( path.join( __dirname, '/de/dist/index.html' ) );
+});
+
+app.get( '/en', function (req, res) {
+  res.sendFile( path.join( __dirname, '/en/dist/index.html' ) );
+});
+
 var server = app.listen( 3000 );
