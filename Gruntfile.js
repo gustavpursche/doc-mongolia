@@ -81,6 +81,32 @@ module.exports = function( grunt ) {
       },
     },
 
+    cloudfront: {
+      options: {
+        region: 'eu-central-1',
+        distributionId: '<%= aws.cloudFrondDistribution %>',
+        credentials: (function() {
+          var aws = grunt.file.readJSON( 'aws.json' );
+
+          return {
+            accessKeyId: aws.AccessKeyId,
+            secretAccessKey: aws.SecretKey,
+          }
+        }()),
+        listInvalidations: true,
+        listDistributions: false,
+      },
+      dist: {
+        CallerReference: Date.now().toString(),
+        Paths: {
+          Quantity: 1,
+          Items: [
+            '/mongolei/de/index.html',
+          ]
+        }
+      },
+    },
+
     less: {
       development: {
         options: {
@@ -433,6 +459,7 @@ module.exports = function( grunt ) {
 
   grunt.registerTask( 'release', [
     'aws_s3:dist',
+    'cloudfront:dist',
   ]);
 
 };
