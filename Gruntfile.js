@@ -80,11 +80,7 @@ module.exports = function( grunt ) {
     },
 
     jshint: {
-      options: {
-      },
-      with_overrides: {
-        options: {
-        },
+      dist: {
         files: {
           src: [
             'resources/js/dev/**/*.js',
