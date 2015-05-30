@@ -215,6 +215,7 @@ module.exports = function( grunt ) {
             'jquery',
             'modernizrvh',
             'modernizrvw',
+            'modules/header',
             'modules/image-sequence',
             'modules/lightbox',
             'modules/sidebar',
