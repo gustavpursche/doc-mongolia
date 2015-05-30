@@ -149,7 +149,7 @@ require( [
     }
 
     /* play all videos, when the tweens are not applied */
-    $.each( $( '.video' ), function() {
+    $.each( $( 'video' ), function() {
       this.play();
     });
 
