@@ -91,27 +91,16 @@ module.exports = function( grunt ) {
     },
 
     replace: {
-      jib_cdn: {
+      js: {
         options: {
           prefix: '',
           patterns: [
             {
               match: /\<script data-main=\".*\"\>\<\/script\>/g,
-              replacement: '',
+              replacement: '<script src="' +
+                           '{{url_prefix}}/resources/js/dist/index.js' +
+                           '" type="text/javascript" async></script>',
             },
-            {
-              match: '"{{js_inline}}";',
-              replacement: function() {
-                var fs = require( 'fs' );
-
-                var data = fs.readFileSync( './resources/js/dist/index.js' );
-                return data.toString();
-              },
-            },
-            {
-              match: '{{url_prefix}}',
-              replacement: 'https://cdn.jib-collective.net/mongolei',
-            }
           ]
         },
 
@@ -121,6 +110,35 @@ module.exports = function( grunt ) {
             flatten: true,
             src: [
               'de/dev/index.html',
+            ],
+            dest: 'de/dist/',
+          },
+        ],
+      },
+
+      jib_cdn: {
+        options: {
+          prefix: '',
+          patterns: [
+            {
+              match: /\<script data-main=\".*\"\>\<\/script\>/g,
+              replacement: '<script src="' +
+                           '{{url_prefix}}/resources/js/dist/index.js' +
+                           '" type="text/javascript" async></script>',
+            },
+            {
+              match: '{{url_prefix}}',
+              replacement: 'https://cdn.jib-collective.net/mongolei',
+            },
+          ]
+        },
+
+        files: [
+          {
+            expand: true,
+            flatten: true,
+            src: [
+              'de/dist/index.html',
             ],
             dest: 'de/dist/',
           },
@@ -148,7 +166,7 @@ module.exports = function( grunt ) {
             dest: 'de/dist/',
           },
         ],
-      },
+      }
     },
 
     requirejs: {
@@ -280,6 +298,7 @@ module.exports = function( grunt ) {
     'cssmin',
     'svgmin:dist',
     'requirejs',
+    'replace:js',
     'replace:jib_cdn',
     'htmlmin:dist',
   ]);
