@@ -3,3 +3,4 @@ node_modules/
 resources/css/
 resources/js/dist/
 /de/dist/
+aws.json

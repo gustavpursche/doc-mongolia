@@ -3,6 +3,83 @@ module.exports = function( grunt ) {
   require( 'load-grunt-tasks' )( grunt );
 
   grunt.initConfig({
+    aws: grunt.file.readJSON( 'aws.json' ),
+
+    aws_s3: {
+      options: {
+        accessKeyId: '<%= aws.AccessKeyId %>',
+        secretAccessKey: '<%= aws.SecretKey %>',
+        region: 'eu-central-1',
+        uploadConcurrency: 15,
+        downloadConcurrency: 15,
+        copyConcurrency: 15,
+        signatureVersion: '<%= aws.signatureVersion %>',
+      },
+      dist: {
+        options: {
+          bucket: '<%= aws.bucket %>',
+          differential: true
+        },
+        files: [
+          {
+            action: 'upload',
+            expand: true,
+            cwd: 'resources/js/dist/gzip',
+            dest: '/mongolei/resources/js/dist/',
+            src: [
+              '*.js',
+            ],
+            stream: true,
+            params: {
+              ContentEncoding: 'gzip',
+              ContentType: 'application/x-javascript',
+            },
+          },
+          {
+            action: 'upload',
+            expand: true,
+            cwd: 'resources/css/dist/gzip',
+            dest: '/mongolei/resources/css/dist/',
+            src: [
+              '*.css',
+            ],
+            stream: true,
+            params: {
+              ContentEncoding: 'gzip',
+              ContentType: 'text/css',
+            },
+          },
+          {
+            action: 'upload',
+            expand: true,
+            cwd: 'resources/icon/',
+            dest: '/mongolei/resources/icon/',
+            src: [
+              '*.svg',
+            ],
+            stream: true,
+            params: {
+              ContentType: 'image/svg+xml',
+            },
+          },
+          {
+            action: 'upload',
+            expand: true,
+            cwd: 'de/dist/gzip',
+            dest: '/mongolei/de/',
+            src: [
+              '*.html',
+            ],
+            stream: true,
+            params: {
+              ContentEncoding: 'gzip',
+              ContentType: 'text/html; charset=utf-8'
+            },
+          }
+        ]
+      },
+    },
+
     less: {
       development: {
         options: {
@@ -335,6 +412,10 @@ module.exports = function( grunt ) {
     'replace:jib_cdn',
     'htmlmin:dist',
     'compress',
+  ]);
+
+  grunt.registerTask( 'release', [
+    'aws_s3:dist',
   ]);
 
 };
