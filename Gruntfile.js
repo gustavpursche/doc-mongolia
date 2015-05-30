@@ -4,7 +4,7 @@ module.exports = function( grunt ) {
 
   grunt.initConfig({
     aws: grunt.file.readJSON( 'aws.json' ),
-    pkg: grunt.file.readJSON( 'package.json' ),
+    awsv: grunt.file.readJSON( 'aws_version.json' ),
 
     aws_s3: {
       options: {
@@ -215,7 +215,7 @@ module.exports = function( grunt ) {
             {
               match: /\<script data-main=\".*\"\>\<\/script\>/g,
               replacement: '<script src="' +
-                           '{{url_prefix}}/resources/js/dist/index.js{{v}}' +
+                           '{{url_prefix}}/resources/js/dist/index.js{{rv}}' +
                            '" type="text/javascript" async></script>',
             },
           ]
@@ -243,7 +243,11 @@ module.exports = function( grunt ) {
             },
             {
               match: '{{v}}',
-              replacement: '?v=<%= pkg.version %>',
+              replacement: '?v=<%= awsv.static_version %>',
+            },
+            {
+              match: '{{rv}}',
+              replacement: '?v=<%= awsv.resources_version %>',
             }
           ]
         },
@@ -272,6 +276,10 @@ module.exports = function( grunt ) {
               match: '{{v}}',
               replacement: '',
             },
+            {
+              match: '{{rv}}',
+              replacement: '',
+            }
           ]
         },
 

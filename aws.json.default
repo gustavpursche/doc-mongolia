@@ -2,5 +2,5 @@
   "AccessKeyId": "",
   "SecretKey": "",
   "bucket": "",
-  "signatureVersion": "v4",
+  "signatureVersion": "v4"
 }
