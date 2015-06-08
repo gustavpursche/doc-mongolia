@@ -91,6 +91,13 @@ define(
                                                   ease: Power4.easeIn,
                                                   y: 0
                                                 } ),
+                captionMoveUp = TweenLite.to( $caption,
+                                              1.5,
+                                              {
+                                                bottom: '85%',
+                                              }, {
+                                                ease: Power4.easeOut,
+                                              }),
                 imageFadeIn = TweenLite.fromTo( $nextFigure,
                                                 imageFadeTime,
                                                 {
@@ -113,7 +120,9 @@ define(
               });
 
               imageAnimation
-                .add( captionFadeIn );
+                .add( captionFadeIn )
+                .add( captionMoveUp )
+                .add( captionFadeOut );
             }
 
             /* Blend over images */
@@ -123,15 +132,6 @@ define(
                   imageFadeOut,
                   imageFadeIn,
                 ]);
-            } else {
-              /* FadeOut Caption */
-              if( $caption.length ) {
-                imageAnimation
-                  .set( {}, {}, '.2' );
-
-                imageAnimation
-                  .add( captionFadeOut );
-              }
             }
 
             imageSequence
