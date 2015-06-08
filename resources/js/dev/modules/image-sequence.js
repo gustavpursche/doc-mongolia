@@ -94,7 +94,7 @@ define(
                 captionMoveUp = TweenLite.to( $caption,
                                               1.5,
                                               {
-                                                bottom: '85%',
+                                                bottom: '80%',
                                               }, {
                                                 ease: Power4.easeOut,
                                               }),
