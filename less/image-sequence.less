@@ -65,6 +65,7 @@
       height: auto;
       max-height: 100%;
       max-width: 100%;
+      min-height: 100%;
       position: relative;
       vertical-align: middle;
       width: auto;
@@ -105,6 +106,18 @@
       padding: 1rem;
       position: static;
       text-shadow: none;
+    }
+  }
+}
+
+@media screen and ( orientation: portrait ) {
+  .sm-image-sequencer{
+    .image-sequence_figure {
+      img,
+      video {
+        min-height: auto;
+        min-width: 100%;
+      }
     }
   }
 }
