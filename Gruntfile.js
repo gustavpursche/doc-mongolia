@@ -216,6 +216,7 @@ module.exports = function( grunt ) {
           'resources/icon/times.svg': 'resources/icon/times.svg',
           'resources/icon/tower.svg': 'resources/icon/tower.svg',
           'resources/icon/well.svg': 'resources/icon/well.svg',
+          'resources/icon/cow.svg': 'resources/icon/cow.svg',
 
           'resources/logo/greenpeace-magazine-logo.svg': 'resources/logo/greenpeace-magazine-logo.svg',
         }
