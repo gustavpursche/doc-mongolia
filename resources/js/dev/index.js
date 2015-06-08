@@ -81,7 +81,7 @@ require( [
             $.each( selectors, updateElement );
           };
 
-          updateVhElements();
+          //updateVhElements();
     });
 });
 

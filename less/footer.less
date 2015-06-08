@@ -49,3 +49,32 @@
 .sm-image-sequencer .footer .image-sequence_figure {
   background: transparent;
 }
+
+@media screen and ( max-width: 1000px ) {
+  .footer {
+    position: relative;
+
+    > .image-sequence_figure--fullscreen {
+      display: none;
+      z-index: 10;
+    }
+
+    > .image-sequence_figure--fullscreen,
+    &_text-container {
+      left: 0;
+      position: absolute;
+      top: 0;
+    }
+
+    &_text-container {
+      z-index: 30;
+    }
+
+    &_left,
+    &_right {
+      float: none;
+      padding: 0;
+      width: 100%;
+    }
+  }
+}
