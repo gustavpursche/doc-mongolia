@@ -36,7 +36,8 @@
 
   &_content,
   &_mobile-headline {
-    background-image: linear-gradient( to bottom, transparent 0%, #090906 80% );
+    background-image: -ms-linear-gradient( bottom, transparent, #090906 80% );
+    background-image: linear-gradient( to bottom, transparent, #090906 80% );
     bottom: 0;
     padding-bottom: 2rem;
     position: absolute;
@@ -115,6 +116,18 @@
       position: relative;
       width: 100%;
       z-index: 20;
+    }
+  }
+}
+
+/* iPad */
+@media only screen and ( min-device-width: 768px ) and ( max-device-width: 1024px ) and ( orientation: landscape ) {
+  .header {
+    &_video {
+      video {
+        height: 100%;
+        width: auto;
+      }
     }
   }
 }
