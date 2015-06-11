@@ -11,7 +11,6 @@ define(
       var imageSequence = new TimelineLite(),
           controller = new ScrollMagic.Controller(),
           container = $container.get( 0 ),
-          containerWidth = $container.outerWidth(),
           $images = $container.children( '.image-sequence_figure' ),
           fadeIn = TweenLite.fromTo( $container,
                                       1,
@@ -62,7 +61,6 @@ define(
             var $figure = $( this ),
                 $nextFigure = $figure.next( '.image-sequence_figure' ),
                 $caption = $figure.children( '.image-sequence_caption' ),
-                captionWidth = $caption.outerWidth(),
                 dataTo = $figure.data( 'to' ) || {},
                 nextDataTo = $nextFigure.data( 'to' ) || {},
                 defaultsTo = {
