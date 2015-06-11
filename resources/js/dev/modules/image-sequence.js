@@ -72,7 +72,6 @@ define(
                   opacity: 1,
                 },
                 imageAnimation = new TimelineLite(),
-                captionLeft = ( containerWidth - captionWidth ) / 2,
                 captionFadeTime = 0.8,
                 imageFadeTime = 1.5,
                 captionFadeIn = TweenLite.to( $caption,
@@ -115,10 +114,6 @@ define(
                                              } );
 
             if( $caption.length ) {
-              $caption.css({
-                left: captionLeft,
-              });
-
               imageAnimation
                 .add( captionFadeIn )
                 .add( captionMoveUp )
