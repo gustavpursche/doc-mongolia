@@ -12,9 +12,18 @@ define(
 
               addListElement = function( index, el ) {
                 var $child = $( '<div/>' ),
-                    $image = $( this ).children( 'img' ).clone();
+                    $image = $( this ).children( 'img' ).clone(),
+                    caption = $image.attr( 'title' );
 
                 $child.append( $image );
+
+                if( caption ) {
+                  $( '<p/>' )
+                    .addClass( 'image_caption u-center-absolute-horizontal' )
+                    .text( caption )
+                    .appendTo( $child );
+                }
+
                 $wrap.append( $child );
               };
 
@@ -54,6 +63,7 @@ define(
                         $( '#colorbox' )
                           .find( '.colorbox_slideshow' )
                             .slick({
+                              adaptiveHeight: true,
                               initialSlide: linkIndex,
                               fade: true,
                               infinite: true,
