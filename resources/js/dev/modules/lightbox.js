@@ -13,7 +13,7 @@ define(
               addListElement = function( index, el ) {
                 var $child = $( '<div/>' ),
                     $image = $( this ).children( 'img' ).clone(),
-                    caption = $image.attr( 'title' );
+                    caption = $image.attr( 'alt' );
 
                 $child.append( $image );
 
