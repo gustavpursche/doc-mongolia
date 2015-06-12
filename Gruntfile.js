@@ -99,11 +99,11 @@ module.exports = function( grunt ) {
       dist: {
         CallerReference: Date.now().toString(),
         Paths: {
-          Quantity: 1,
+          Quantity: 3,
           Items: [
             '/mongolei/de/index.html',
-            '/mongolei/resources/js/index.js',
-            '/mongolei/resources/css/main.css',
+            '/mongolei/resources/js/dist/index.js',
+            '/mongolei/resources/css/dist/main.css',
           ]
         }
       },
