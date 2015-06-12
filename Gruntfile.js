@@ -358,16 +358,11 @@ module.exports = function( grunt ) {
                                 'uncompressed/TweenMax',
             slick:              '../../../bower_components/slick.js/slick/' +
                                 'slick',
-            webfontloader:      '../../../bower_components/webfontloader/'+
-                                'webfontloader',
           },
 
           shim: {
             colorbox: {
               deps: [ 'jquery', ],
-            },
-            webfontloader: {
-              exports: 'WebFont',
             },
             modernizr: {
               exports: 'Modernizr',
@@ -396,7 +391,6 @@ module.exports = function( grunt ) {
             'modules/sidebar',
             'ScrollMagic-gsap',
             'slick',
-            'webfontloader',
           ],
           uglify2: {
             output: {

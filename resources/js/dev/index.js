@@ -14,15 +14,11 @@ requirejs.config({
       TweenMax: BOWER_BASE + 'gsap/src/uncompressed/TweenMax',
       TimelineMax: BOWER_BASE + 'gsap/src/uncompressed/TimelineMax',
       slick: BOWER_BASE + 'slick.js/slick/slick',
-      webfontloader: BOWER_BASE + 'webfontloader/webfontloader',
     },
 
     shim: {
       colorbox: {
         deps: [ 'jquery', ],
-      },
-      webfontloader: {
-        exports: 'WebFont',
       },
       modernizr: {
         exports: 'Modernizr',
@@ -37,17 +33,6 @@ requirejs.config({
         depts: [ 'jquery', ],
       },
     },
-});
-
-require( [ 'webfontloader', ], function( WebFont ) {
-
-  WebFont.load({
-    classes: false,
-    google: {
-      families: [ 'Playfair+Display::latin' ],
-    },
-  });
-
 });
 
 require( [
