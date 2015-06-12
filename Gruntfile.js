@@ -102,6 +102,8 @@ module.exports = function( grunt ) {
           Quantity: 1,
           Items: [
             '/mongolei/de/index.html',
+            '/mongolei/resources/js/index.js',
+            '/mongolei/resources/css/main.css',
           ]
         }
       },
