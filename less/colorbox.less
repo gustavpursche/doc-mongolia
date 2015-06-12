@@ -3,7 +3,7 @@
   z-index: 999;
 
   &_slideshow {
-    background-color: rgb( 255, 255, 255 );
+    background-color: @lightbox-background-color;
     height: 100%;
     list-style: none;
     margin: 0;
@@ -28,6 +28,7 @@
   }
 
   .slick-slide {
+    background-color: @lightbox-background-color;
     text-align: center;
   }
 
@@ -71,7 +72,7 @@
 /* Basic Styles */
 #cbox {
   &Overlay {
-    background: rgb( 255, 255, 255 ) none repeat scroll 0% 0%;
+    background: @lightbox-background-color none repeat scroll 0% 0%;
     height: 100%;
     left: 0;
     overflow: hidden;
@@ -82,7 +83,7 @@
   }
 
   &Close {
-    background-color: rgb( 255, 255, 255 );
+    background-color: @lightbox-background-colorxw;
     border: none;
     position: absolute;
     right: 0;
