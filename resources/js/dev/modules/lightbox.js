@@ -12,10 +12,15 @@ define(
 
               addListElement = function( index, el ) {
                 var $child = $( '<div/>' ),
-                    $image = $( this ).children( 'img' ).clone(),
-                    caption = $image.attr( 'alt' );
+                    $image = $( this ).children( 'img' ),
+                    caption = $image.attr( 'alt' ),
+                    $newImage = $( '<img/>' )
+                                  .attr({
+                                    src: $image.data( 'lightboxsrc' ),
+                                    alt: caption || '',
+                                  });
 
-                $child.append( $image );
+                $child.append( $newImage );
 
                 if( caption ) {
                   $( '<p/>' )
@@ -85,7 +90,8 @@ define(
                       className: 'colorbox',
                       fadeOut: transitionSpeed,
                       height: '90%',
-                      opacity: 0.8,
+                      maxWidth: '100%',
+                      opacity: 0.85,
                       scalePhotos: false,
                       scrolling: false,
                       slideshow: false,
