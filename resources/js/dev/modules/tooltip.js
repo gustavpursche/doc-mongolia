@@ -37,11 +37,13 @@ define([
           };
         },
 
-        hideTooltip = function( $trigger ) {
+        hideTooltip = function( $trigger, force ) {
           var $instance = $trigger.data( 'tooltipinstance' );
 
           if( !$instance || !$instance.length || $trigger.data( 'locked' ) === true ) {
-            return;
+            if( force !== true ) {
+              return;
+            }
           }
 
           $instance.remove();
@@ -51,6 +53,9 @@ define([
               tooltipinstance: undefined,
             })
             .removeClass( activeClass );
+
+          $( window )
+            .off( '.tooltip' );
         },
 
         showTooltip = function( $trigger ) {
@@ -67,21 +72,51 @@ define([
             .attr({
               tabindex: 0,
             })
-            .focus();
+            .focus()
+
+            /* when entering with the mouse, don't close it */
+            .on( 'mouseenter.tooltip', function() {
+              $trigger.data( 'locked', true );
+            });
 
           $trigger
             .data({
               tooltipinstance: $skeleton,
             })
             .addClass( activeClass );
+
+          setTimeout(function() {
+            $( window )
+              .on( 'click.tooltip keydown.tooltip', function( e ) {
+                var $target = $( e.target );
+
+                /* Ability to close Tooltip via ESC */
+                if( e.type === 'keydown' && e.which === 27 ) {
+                  hideTooltip( $trigger, true );
+                  return;
+                }
+
+                /* Only close, if the interaction was outside of the tooltip */
+                if( $target.closest( '.tooltip' ).length ||
+                    $target.closest( '.tooltip_outer' ).length ) {
+                  return;
+                }
+
+                hideTooltip( $trigger, true );
+              });
+          }, 10);
         };
 
     $button
-      .on( 'mouseenter.tooltip focus.tooltip', function( e ) {
+      .on( 'mouseenter.tooltip focus.tooltip', function( e, data ) {
         showTooltip( $( this ) );
       })
       .on( 'mouseleave.tooltip blur.tooltip', function( e ) {
-        hideTooltip( $( this ) );
+        var $this = $( this );
+
+        setTimeout(function() {
+          hideTooltip( $this );
+        }, 150);
       })
       .on( 'click.tooltip', function( e ) {
         var $this = $( this );
