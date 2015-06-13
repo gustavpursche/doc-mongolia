@@ -277,7 +277,11 @@ module.exports = function( grunt ) {
             {
               match: '{{rv}}',
               replacement: '?v=<%= awsv.resources_version %>',
-            }
+            },
+            {
+              match: '{{maps_api_key}}',
+              replacement: 'AIzaSyC45zhjEU9fHUavYgdzqMyGj27l7zsMyLQ',
+            },
           ]
         },
 
@@ -308,7 +312,11 @@ module.exports = function( grunt ) {
             {
               match: '{{rv}}',
               replacement: '',
-            }
+            },
+            {
+              match: '{{maps_api_key}}',
+              replacement: 'AIzaSyC45zhjEU9fHUavYgdzqMyGj27l7zsMyLQ',
+            },
           ]
         },
 
