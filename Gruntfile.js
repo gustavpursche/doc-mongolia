@@ -389,6 +389,7 @@ module.exports = function( grunt ) {
             'modules/image-sequence',
             'modules/lightbox',
             'modules/sidebar',
+            'modules/tooltip',
             'ScrollMagic-gsap',
             'slick',
           ],
