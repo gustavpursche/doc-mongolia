@@ -1,0 +1,55 @@
+.tooltip {
+  background: transparent;
+  border: none;
+  display: inline-block;
+  line-height: 1.4;
+  padding: 0;
+  text-decoration: underline;
+  transition: opacity .2s;
+
+  &_outer {
+    background: @tooltip-background-color;
+    border-radius: 3px;
+    outline: none;
+    position: absolute;
+    z-index: 100;
+
+    &:before {
+      border-top: 12px solid @tooltip-background-color;
+      border-right: 12px solid transparent;
+      border-left: 12px solid transparent;
+      bottom: -12px;
+      content: ' ';
+      left: auto;
+      position: absolute;
+      right: 20px;
+      z-index: 90;
+    }
+
+    &--left {
+      &:before {
+        left: 20px;
+        right: 20px;
+      }
+    }
+  }
+
+  &_inner {
+    color: @tooltip-color-base;
+    line-height: 1.4;
+    max-width: 32rem;
+    padding: .8rem;
+
+    iframe,
+    img {
+      border: none;
+      height: auto;
+      margin-bottom: .5rem;
+      width: 100%;
+    }
+
+    iframe {
+      min-height: 18rem;
+    }
+  }
+}
