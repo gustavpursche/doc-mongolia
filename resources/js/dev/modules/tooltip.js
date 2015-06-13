@@ -88,7 +88,11 @@ define([
           setTimeout(function() {
             $( window )
               .on( 'click.tooltip keydown.tooltip', function( e ) {
-                var $target = $( e.target );
+                var $target = $( e.target ),
+                    closest = [
+                      '.tooltip',
+                      '.tooltip_outer',
+                    ];
 
                 /* Ability to close Tooltip via ESC */
                 if( e.type === 'keydown' && e.which === 27 ) {
@@ -97,8 +101,7 @@ define([
                 }
 
                 /* Only close, if the interaction was outside of the tooltip */
-                if( $target.closest( '.tooltip' ).length ||
-                    $target.closest( '.tooltip_outer' ).length ) {
+                if( $target.closest( closest.join( ', ' ) ).length ) {
                   return;
                 }
 
@@ -116,7 +119,7 @@ define([
 
         setTimeout(function() {
           hideTooltip( $this );
-        }, 150);
+        }, 200);
       })
       .on( 'click.tooltip', function( e ) {
         var $this = $( this );
