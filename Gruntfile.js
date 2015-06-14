@@ -66,6 +66,17 @@ module.exports = function( grunt ) {
           {
             action: 'upload',
             expand: true,
+            cwd: 'assets/',
+            dest: '/mongolei/assets/',
+            src: [
+              '*.jpg',
+              '*.mp4',
+            ],
+            stream: true,
+          },
+          {
+            action: 'upload',
+            expand: true,
             cwd: 'de/dist/gzip',
             dest: '/mongolei/de/',
             src: [
