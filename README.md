@@ -1,4 +1,7 @@
-# Scroll-Reportage about Uranium Extraction in Mongolia #
+Web-Scroll-Reportage about uranium mining and consequences for for the nomads in Mongolia
+
+Authors: https://jib-collective.net
+Publication Date: 2015/07/16
 
 ## Installation ##
 ```bash
