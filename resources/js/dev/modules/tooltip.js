@@ -47,12 +47,45 @@ define([
               offsetTop = 10,
 
               windowWidth,
-              direction = 'left',
-              maxWidth;
+              maxWidth,
 
-          if( triggerLeft - tooltipWidth <= 0 ) {
+              triggerHasLeftMoreSpaceThanRight = function() {
+                var windowWidth = $( window ).width(),
+                    triggerSpaceLeft = triggerLeft + ( triggerWidth / 2 ),
+                    triggerSpaceRight = windowWidth - triggerSpaceLeft;
+
+                return triggerSpaceLeft > triggerSpaceRight;
+              };
+
+          if( triggerHasLeftMoreSpaceThanRight() ) {
+            $tooltip
+              .css({
+                left: ( triggerLeft + ( triggerWidth / 2 ) ) - tooltipWidth,
+              })
+              .addClass( 'tooltip_outer--right' );
+
+            if( triggerLeft - tooltipWidth <= 0 ) {
+              $tooltip
+                .css({
+                  width: Math.abs( triggerLeft - 10 ),
+                });
+
+              tooltipHeight = $tooltip.outerHeight();
+              tooltipWidth = $tooltip.outerWidth();
+
+              $tooltip
+                .css({
+                  top: triggerTop - tooltipHeight - offsetTop,
+                  left: ( triggerLeft + ( triggerWidth / 2 ) ) - tooltipWidth,
+                });
+            } else {
+              $tooltip
+                .css({
+                  top: tooltipTop - offsetTop,
+                });
+            }
+          } else {
             tooltipLeft = ( triggerLeft + ( triggerWidth / 2 ) ) - offsetLeft;
-            direction = 'right';
 
             /* if it breaks the viewport to the right, make it smaller */
             windowWidth = $( window ).width();
@@ -63,7 +96,7 @@ define([
                 .css({
                   left: tooltipLeft,
                 })
-                .addClass( 'tooltip_outer--' + direction );
+                .addClass( 'tooltip_outer--left' );
 
               maxWidth = tooltipWidth - (
                           (
@@ -89,15 +122,8 @@ define([
                   left: tooltipLeft + offsetLeft,
                   top: tooltipTop - offsetTop,
                 })
-                .addClass( 'tooltip_outer--' + direction );
+                .addClass( 'tooltip_outer--left' );
             }
-          } else {
-            $tooltip
-              .css({
-                left: tooltipLeft + offsetLeft,
-                top: tooltipTop - offsetTop,
-              })
-              .addClass( 'tooltip_outer--' + direction );
           }
         },
 
