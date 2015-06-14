@@ -4,12 +4,26 @@ define([
   var init = function( $button ) {
     var activeClass = 'tooltip--active';
 
-    var createTooltip = function( content ) {
-          var $inner = $( '<div/>')
+    var createTooltip = function( title, content ) {
+          var $close = $( '<button/>')
+                        .addClass( 'tooltip_close' )
+                        .append(
+                          '<span class="icon icon--times-white"></span>' +
+                          '<span class="u-is-accessible-hidden">Close</span>'
+                         ),
+              $title = $( '<strong>' )
+                        .addClass( 'tooltip_title' )
+                        .text( title ),
+              $header = $( '<div/>')
+                          .addClass( 'tooltip_header u-clearfix' )
+                          .append( title ? $title : $() )
+                          .append( $close ),
+              $inner = $( '<div/>')
                           .addClass( 'tooltip_inner' )
                           .html( content ),
               $outer = $( '<div/>' )
                         .addClass( 'tooltip_outer' )
+                        .append( $header )
                         .append( $inner );
 
           return $outer;
@@ -101,6 +115,7 @@ define([
           $trigger
             .data({
               tooltipinstance: undefined,
+              locked: false,
             })
             .removeClass( activeClass );
 
@@ -114,7 +129,8 @@ define([
           }
 
           var content = $trigger.children().html(),
-              $skeleton = createTooltip( content );
+              title = $trigger.attr( 'title' ),
+              $skeleton = createTooltip( title, content );
 
           $skeleton
             .appendTo( 'body' );
@@ -130,7 +146,13 @@ define([
             /* when entering with the mouse, don't close it */
             .on( 'mouseenter.tooltip', function() {
               $trigger.data( 'locked', true );
-            });
+            })
+
+            /* close button binding */
+            .find( '.tooltip_close' )
+              .on( 'click.tooltip', function( e ) {
+                hideTooltip( $trigger, true );
+              });
 
           $trigger
             .data({
