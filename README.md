@@ -25,7 +25,7 @@ node server.js
 grunt build
 ```
 
-## Release to a S3 Instance ##
+## Release to a S3 ##
 ```bash
 cp aws.json.default aws.json
 
