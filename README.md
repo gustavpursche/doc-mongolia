@@ -1,7 +1,8 @@
 Web-Scroll-Reportage about uranium mining and consequences for for the nomads in Mongolia
 
-Authors: https://jib-collective.net
-Publication Date: 2015/07/16
+- Authors: https://jib-collective.net
+- Publication Date: 2015/07/16
+- URL: https://jib-collective.net/stories/mongolia/
 
 ## Installation ##
 ```bash
