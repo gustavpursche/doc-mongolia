@@ -155,13 +155,28 @@ define([
           }
 
           var content = $trigger.children().html(),
+              $content = $( '<div/>' ).html( content ),
               title = $trigger.attr( 'title' ),
               $skeleton = createTooltip( title, content );
 
-          $skeleton
-            .appendTo( 'body' );
+          if( $content.find( 'img' ).length ) {
+            var $image = $content.find( 'img' ),
+                src = $image.attr( 'src' ),
+                srcset = $image.attr( 'srcset' ),
+                image = new Image();
 
-          doPosition( $trigger, $skeleton );
+            image.src = src;
+            image.srcset = srcset;
+
+            $( image )
+              .on( 'load', function() {
+                $skeleton.appendTo( 'body' );
+                doPosition( $trigger, $skeleton );
+              });
+          } else {
+            $skeleton.appendTo( 'body' );
+            doPosition( $trigger, $skeleton );
+          }
 
           $skeleton
             .attr({
