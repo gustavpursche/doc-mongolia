@@ -60,7 +60,9 @@
 
 @media screen and ( max-width: 1000px ) {
   .footer {
+    margin: 0 auto;
     position: relative;
+    width: 45rem;
 
     > .image-sequence_figure--fullscreen {
       display: none;
@@ -74,9 +76,24 @@
       top: 0;
     }
 
+    &_left {
+      padding-left: 0
+    }
+
+    &_right {
+      padding-right: 0
+    }
+
     &_text-container {
       z-index: 30;
     }
+  }
+}
+
+@media screen and ( max-width: 700px ) {
+  .footer {
+    position: relative;
+    width: 100%;
 
     &_left,
     &_right {
