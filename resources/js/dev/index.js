@@ -77,13 +77,24 @@ require( [ 'jquery', ], function( $ ) {
         var $section = $( this ),
             data = $section.data(),
             module = data.module || undefined,
-            options = data.options || undefined;
+            options = data.options || undefined,
+            alwaysAllowed = [
+              'tooltip',
+            ];
 
         if( !module ) {
           return;
         }
 
         $.each( module.split(','), function loadModule( index, localModule ) {
+
+          /* allow certain modules on all screens */
+          if( alwaysAllowed.indexOf( localModule ) === -1 ) {
+            if( $( window ).width() < 1000 ) {
+              return;
+            }
+          }
+
           require( [ 'modules/' + localModule ], function( localModule ) {
             localModule( $section, options );
           });
@@ -92,11 +103,6 @@ require( [ 'jquery', ], function( $ ) {
       };
 
   $(function() {
-
-    if( $( window ).width() < 1000 ) {
-      return;
-    }
-
     /* scrollmagic trigger */
     $.each( $( '.js--enhance' ), enhanceSection );
   });

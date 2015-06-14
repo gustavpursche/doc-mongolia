@@ -15,7 +15,7 @@ define([
           return $outer;
         },
 
-        getPosition = function( $trigger, $tooltip ) {
+        doPosition = function( $trigger, $tooltip ) {
           var triggerOffset = $trigger.offset(),
               triggerLeft = triggerOffset.left,
               triggerTop = triggerOffset.top,
@@ -24,17 +24,67 @@ define([
 
               tooltipHeight = $tooltip.outerHeight(),
               tooltipWidth = $tooltip.outerWidth(),
+              tooltipOrigWidth = tooltipWidth,
 
               tooltipLeft = ( triggerLeft - tooltipWidth ) + ( triggerWidth / 2 ),
-              tooltipTop = ( triggerTop - ( triggerHeight / 2 ) ) - tooltipHeight;
+              tooltipTop = triggerTop - tooltipHeight,
 
-          tooltipLeft += 30;
-          tooltipTop -= 5;
+              offsetLeft = 30,
+              offsetTop = 10,
 
-          return {
-            left: tooltipLeft,
-            top: tooltipTop,
-          };
+              windowWidth,
+              direction = 'left',
+              maxWidth;
+
+          if( triggerLeft - tooltipWidth <= 0 ) {
+            tooltipLeft = ( triggerLeft + ( triggerWidth / 2 ) ) - offsetLeft;
+            direction = 'right';
+
+            /* if it breaks the viewport to the right, make it smaller */
+            windowWidth = $( window ).width();
+
+            /* shrink the tooltip */
+            if( tooltipLeft + tooltipWidth > windowWidth ) {
+              $tooltip
+                .css({
+                  left: tooltipLeft,
+                })
+                .addClass( 'tooltip_outer--' + direction );
+
+              maxWidth = tooltipWidth - (
+                          (
+                            tooltipLeft + tooltipWidth + offsetLeft
+                            + 10 /* margin-right */
+                          ) - windowWidth );
+
+              $tooltip
+                .css({
+                  width: maxWidth,
+                });
+
+              tooltipHeight = $tooltip.outerHeight();
+              tooltipTop = triggerTop - tooltipHeight - offsetTop;
+
+              $tooltip
+                .css({
+                  top: tooltipTop,
+                });
+            } else {
+              $tooltip
+                .css({
+                  left: tooltipLeft + offsetLeft,
+                  top: tooltipTop - offsetTop,
+                })
+                .addClass( 'tooltip_outer--' + direction );
+            }
+          } else {
+            $tooltip
+              .css({
+                left: tooltipLeft + offsetLeft,
+                top: tooltipTop - offsetTop,
+              })
+              .addClass( 'tooltip_outer--' + direction );
+          }
         },
 
         hideTooltip = function( $trigger, force ) {
@@ -67,8 +117,11 @@ define([
               $skeleton = createTooltip( content );
 
           $skeleton
-            .appendTo( 'body' )
-            .css( getPosition( $trigger, $skeleton ) )
+            .appendTo( 'body' );
+
+          doPosition( $trigger, $skeleton );
+
+          $skeleton
             .attr({
               tabindex: 0,
             })

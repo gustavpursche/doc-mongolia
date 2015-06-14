@@ -1,4 +1,7 @@
 .tooltip {
+  @arrow-width: 12px;
+  @arrow-offset: 20px;
+
   background: transparent;
   border: none;
   display: inline-block;
@@ -10,26 +13,32 @@
   &_outer {
     background: @tooltip-background-color;
     border-radius: 3px;
+    width: 32rem;
     outline: none;
     position: absolute;
     z-index: 100;
 
     &:before {
-      border-top: 12px solid @tooltip-background-color;
-      border-right: 12px solid transparent;
-      border-left: 12px solid transparent;
-      bottom: -12px;
+      border-top: @arrow-width solid @tooltip-background-color;
+      border-right: @arrow-width solid transparent;
+      border-left: @arrow-width solid transparent;
+      bottom: -@arrow-width;
       content: ' ';
-      left: auto;
       position: absolute;
-      right: 20px;
       z-index: 90;
+    }
+
+    &--right {
+      &:before {
+        left: @arrow-offset;
+        right: auto;
+      }
     }
 
     &--left {
       &:before {
-        left: 20px;
-        right: 20px;
+        left: auto;
+        right: @arrow-offset;
       }
     }
   }
@@ -37,7 +46,6 @@
   &_inner {
     color: @tooltip-color-base;
     line-height: 1.4;
-    max-width: 32rem;
     padding: .8rem;
 
     iframe,
