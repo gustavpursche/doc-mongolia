@@ -54,12 +54,13 @@ module.exports = function( grunt ) {
             action: 'upload',
             expand: true,
             cwd: 'resources/icon/',
-            dest: '/mongolei/resources/icon/',
+            dest: '/mongolei/resources/icon/gzip',
             src: [
               '*.svg',
             ],
             stream: true,
             params: {
+              ContentEncoding: 'gzip',
               ContentType: 'image/svg+xml',
             },
           },
@@ -175,6 +176,18 @@ module.exports = function( grunt ) {
           '*.css',
         ],
         dest: 'resources/css/dist/gzip',
+      },
+      svg: {
+        options: {
+          mode: 'gzip',
+          level: 9,
+        },
+        expand: true,
+        cwd: 'resources/icon/',
+        src: [
+          '*.svg',
+        ],
+        dest: 'resources/icon/gzip',
       },
     },
 
