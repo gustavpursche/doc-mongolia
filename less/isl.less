@@ -15,14 +15,7 @@
   }
 
   &_sky {
-    background-image: data-uri( '../resources/icon/sky.svg' );
-    background-position: bottom left;
-    background-repeat: no-repeat;
-    background-size: 100% auto;
-    min-height: 400px;
-    padding-top: 2rem;
-    position: relative;
-    z-index: 100;
+    background-image: linear-gradient( to bottom, transparent 0, rgb( 208, 210, 184 ) 100% );
 
     &-text {
       padding: 0 2rem 7rem 0;
@@ -35,7 +28,19 @@
     }
   }
 
+  &_sky-inner {
+    background-image: data-uri( '../resources/icon/sky.svg' );
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    min-height: 400px;
+    padding-top: 2rem;
+    position: relative;
+    z-index: 100;
+  }
+
   &_earth {
+    background-color: rgb( 124, 139, 161 );
     background-image: data-uri( '../resources/icon/earth.svg' );
     background-position: top left;
     background-repeat: no-repeat;
