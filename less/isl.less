@@ -88,6 +88,16 @@
   }
 }
 
+@media screen and ( max-width: 1650px ) {
+  .isl {
+    &_tower {
+      bottom: -22.7rem;
+      right: -22rem;
+      width: 23rem;
+    }
+  }
+}
+
 @media screen and ( max-width: 1400px ) {
   .isl {
     &_tower {
@@ -134,7 +144,7 @@
       width: 6rem;
     }
 
-    &_sky {
+    &_sky-inner {
       min-height: 325px;
     }
 
@@ -183,7 +193,7 @@
 @media screen and ( max-width: 880px ) {
   .isl {
     &_earth,
-    &_sky {
+    &_sky-inner {
       min-height: 278px;
     }
 
@@ -232,7 +242,7 @@
     }
 
     &_earth,
-    &_sky {
+    &_sky-inner {
       min-height: 240px;
     }
 
@@ -252,8 +262,12 @@
     margin-top: 0;
     margin-bottom: -1rem;
 
-    &_earth,
     &_sky {
+      background: transparent;
+    }
+
+    &_earth,
+    &_sky-inner {
       background: transparent;
       min-height: auto;
       padding: 0;
