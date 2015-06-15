@@ -110,25 +110,14 @@ module.exports = function( grunt ) {
       dist: {
         CallerReference: Date.now().toString(),
         Paths: {
-          Quantity: 3,
+          Quantity: 4,
           Items: [
             '/mongolei/de/index.html',
             '/mongolei/resources/js/dist/index.js',
             '/mongolei/resources/css/dist/main.css',
+            '/mongolei/resources/css/dist/print.css',
           ]
         }
-      },
-    },
-
-    less: {
-      development: {
-        options: {
-          ieCompat: false,
-        },
-        files: {
-          'resources/css/dev/main.css': 'less/index.less',
-          'resources/css/dev/print.css': 'less/print.less',
-        },
       },
     },
 
@@ -214,6 +203,18 @@ module.exports = function( grunt ) {
         files: {
           'de/dist/index.html': 'de/dist/index.html',
         }
+      },
+    },
+
+    less: {
+      development: {
+        options: {
+          ieCompat: false,
+        },
+        files: {
+          'resources/css/dev/main.css': 'less/index.less',
+          'resources/css/dev/print.css': 'less/print.less',
+        },
       },
     },
 
