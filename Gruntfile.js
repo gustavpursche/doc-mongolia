@@ -127,6 +127,7 @@ module.exports = function( grunt ) {
         },
         files: {
           'resources/css/dev/main.css': 'less/index.less',
+          'resources/css/dev/print.css': 'less/print.less',
         },
       },
     },
@@ -140,6 +141,12 @@ module.exports = function( grunt ) {
           'resources/css/dev/main.css',
         ],
         dest: 'resources/css/dist/main.css',
+      },
+      print: {
+        src: [
+          'resources/css/dev/print.css',
+        ],
+        dest: 'resources/css/dist/print.css',
       },
     },
 
@@ -190,6 +197,7 @@ module.exports = function( grunt ) {
       dist: {
         files: {
           'resources/css/dist/main.css': 'resources/css/dist/main.css',
+          'resources/css/dist/print.css': 'resources/css/dist/print.css',
         },
       },
     },
