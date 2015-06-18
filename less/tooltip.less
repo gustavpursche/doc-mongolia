@@ -45,8 +45,6 @@
   }
 
   &_header {
-    background-color: lighten( @tooltip-background-color, 4% );
-    border-bottom: 1px solid darken( @tooltip-background-color, 6% );
     border-radius: @border-radius @border-radius 0 0;
     line-height: 1;
     padding: .4rem 1rem;
@@ -86,6 +84,8 @@
   &_title {
     color: @tooltip-color-base;
     font-size: 1rem;
+    position: relative;
+    top: .4rem;
   }
 
   &_inner {
