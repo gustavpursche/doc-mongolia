@@ -3,14 +3,122 @@ module.exports = function( grunt ) {
   require( 'load-grunt-tasks' )( grunt );
 
   grunt.initConfig({
-    less: {
-      development: {
+    aws: grunt.file.readJSON( 'aws.json' ),
+    awsv: grunt.file.readJSON( 'aws_version.json' ),
+
+    aws_s3: {
+      options: {
+        accessKeyId: '<%= aws.AccessKeyId %>',
+        secretAccessKey: '<%= aws.SecretKey %>',
+        region: 'eu-central-1',
+        uploadConcurrency: 15,
+        downloadConcurrency: 15,
+        copyConcurrency: 15,
+        signatureVersion: '<%= aws.signatureVersion %>',
+      },
+      dist: {
         options: {
-          ieCompat: false,
+          bucket: '<%= aws.bucket %>',
+          differential: true
         },
-        files: {
-          'resources/css/dev/main.css': 'less/index.less',
-        },
+        files: [
+          {
+            action: 'upload',
+            expand: true,
+            cwd: 'resources/js/dist/gzip',
+            dest: '/mongolei/resources/js/dist/',
+            src: [
+              '*.js',
+            ],
+            stream: true,
+            params: {
+              ContentEncoding: 'gzip',
+              ContentType: 'application/x-javascript',
+            },
+          },
+          {
+            action: 'upload',
+            expand: true,
+            cwd: 'resources/css/dist/gzip',
+            dest: '/mongolei/resources/css/dist/',
+            src: [
+              '*.css',
+            ],
+            stream: true,
+            params: {
+              ContentEncoding: 'gzip',
+              ContentType: 'text/css',
+            },
+          },
+          {
+            action: 'upload',
+            expand: true,
+            cwd: 'resources/icon/',
+            dest: '/mongolei/resources/icon/gzip',
+            src: [
+              '*.svg',
+            ],
+            stream: true,
+            params: {
+              ContentEncoding: 'gzip',
+              ContentType: 'image/svg+xml',
+            },
+          },
+          {
+            action: 'upload',
+            expand: true,
+            cwd: 'assets/',
+            dest: '/mongolei/assets/',
+            src: [
+              '*.jpg',
+              '*.mp4',
+            ],
+            stream: true,
+          },
+          {
+            action: 'upload',
+            expand: true,
+            cwd: 'de/dist/gzip',
+            dest: '/mongolei/de/',
+            src: [
+              '*.html',
+            ],
+            stream: true,
+            params: {
+              ContentEncoding: 'gzip',
+              ContentType: 'text/html; charset=utf-8'
+            },
+          }
+        ]
+      },
+    },
+
+    cloudfront: {
+      options: {
+        region: 'eu-central-1',
+        distributionId: '<%= aws.cloudFrondDistribution %>',
+        credentials: (function() {
+          var aws = grunt.file.readJSON( 'aws.json' );
+
+          return {
+            accessKeyId: aws.AccessKeyId,
+            secretAccessKey: aws.SecretKey,
+          }
+        }()),
+        listInvalidations: true,
+        listDistributions: false,
+      },
+      dist: {
+        CallerReference: Date.now().toString(),
+        Paths: {
+          Quantity: 4,
+          Items: [
+            '/mongolei/de/index.html',
+            '/mongolei/resources/js/dist/index.js',
+            '/mongolei/resources/css/dist/main.css',
+            '/mongolei/resources/css/dist/print.css',
+          ]
+        }
       },
     },
 
@@ -24,6 +132,63 @@ module.exports = function( grunt ) {
         ],
         dest: 'resources/css/dist/main.css',
       },
+      print: {
+        src: [
+          'resources/css/dev/print.css',
+        ],
+        dest: 'resources/css/dist/print.css',
+      },
+    },
+
+    compress: {
+      html: {
+        options: {
+          mode: 'gzip',
+          level: 9,
+        },
+        expand: true,
+        cwd: 'de/dist',
+        src: [
+          '*.html',
+        ],
+        dest: 'de/dist/gzip',
+      },
+      js: {
+        options: {
+          mode: 'gzip',
+          level: 9,
+        },
+        expand: true,
+        cwd: 'resources/js/dist',
+        src: [
+          '*.js',
+        ],
+        dest: 'resources/js/dist/gzip',
+      },
+      css: {
+        options: {
+          mode: 'gzip',
+          level: 9,
+        },
+        expand: true,
+        cwd: 'resources/css/dist',
+        src: [
+          '*.css',
+        ],
+        dest: 'resources/css/dist/gzip',
+      },
+      svg: {
+        options: {
+          mode: 'gzip',
+          level: 9,
+        },
+        expand: true,
+        cwd: 'resources/icon/',
+        src: [
+          '*.svg',
+        ],
+        dest: 'resources/icon/gzip',
+      },
     },
 
     cssmin: {
@@ -34,6 +199,7 @@ module.exports = function( grunt ) {
       dist: {
         files: {
           'resources/css/dist/main.css': 'resources/css/dist/main.css',
+          'resources/css/dist/print.css': 'resources/css/dist/print.css',
         },
       },
     },
@@ -51,6 +217,18 @@ module.exports = function( grunt ) {
           'de/dist/index.html': 'de/dist/index.html',
           'en/dist/index.html': 'en/dist/index.html',
         }
+      },
+    },
+
+    less: {
+      development: {
+        options: {
+          ieCompat: false,
+        },
+        files: {
+          'resources/css/dev/main.css': 'less/index.less',
+          'resources/css/dev/print.css': 'less/print.less',
+        },
       },
     },
 
@@ -72,8 +250,10 @@ module.exports = function( grunt ) {
           'resources/icon/search-plus.svg': 'resources/icon/search-plus.svg',
           'resources/icon/sky.svg': 'resources/icon/sky.svg',
           'resources/icon/times.svg': 'resources/icon/times.svg',
+          'resources/icon/times-white.svg': 'resources/icon/times-white.svg',
           'resources/icon/tower.svg': 'resources/icon/tower.svg',
           'resources/icon/well.svg': 'resources/icon/well.svg',
+          'resources/icon/cow.svg': 'resources/icon/cow.svg',
 
           'resources/logo/greenpeace-magazine-logo.svg': 'resources/logo/greenpeace-magazine-logo.svg',
         }
@@ -92,27 +272,16 @@ module.exports = function( grunt ) {
     },
 
     replace: {
-      jib_cdn: {
+      js: {
         options: {
           prefix: '',
           patterns: [
             {
               match: /\<script data-main=\".*\"\>\<\/script\>/g,
-              replacement: '',
+              replacement: '<script src="' +
+                           '{{url_prefix}}/resources/js/dist/index.js{{rv}}' +
+                           '" type="text/javascript" async></script>',
             },
-            {
-              match: '"{{js_inline}}";',
-              replacement: function() {
-                var fs = require( 'fs' );
-
-                var data = fs.readFileSync( './resources/js/dist/index.js' );
-                return data.toString();
-              },
-            },
-            {
-              match: '{{url_prefix}}',
-              replacement: 'https://cdn.jib-collective.net/mongolei',
-            }
           ]
         },
 
@@ -122,6 +291,41 @@ module.exports = function( grunt ) {
             flatten: true,
             src: [
               'de/dev/index.html',
+            ],
+            dest: 'de/dist/',
+          },
+        ],
+      },
+
+      jib_cdn: {
+        options: {
+          prefix: '',
+          patterns: [
+            {
+              match: '{{url_prefix}}',
+              replacement: 'https://cdn.jib-collective.net/mongolei',
+            },
+            {
+              match: '{{v}}',
+              replacement: '?v=<%= awsv.static_version %>',
+            },
+            {
+              match: '{{rv}}',
+              replacement: '?v=<%= awsv.resources_version %>',
+            },
+            {
+              match: '{{maps_api_key}}',
+              replacement: 'AIzaSyC45zhjEU9fHUavYgdzqMyGj27l7zsMyLQ',
+            },
+          ]
+        },
+
+        files: [
+          {
+            expand: true,
+            flatten: true,
+            src: [
+              'de/dist/index.html',
             ],
             dest: 'de/dist/',
           },
@@ -143,7 +347,19 @@ module.exports = function( grunt ) {
             {
               match: '{{url_prefix}}',
               replacement: '',
-            }
+            },
+            {
+              match: '{{v}}',
+              replacement: '',
+            },
+            {
+              match: '{{rv}}',
+              replacement: '',
+            },
+            {
+              match: '{{maps_api_key}}',
+              replacement: 'AIzaSyC45zhjEU9fHUavYgdzqMyGj27l7zsMyLQ',
+            },
           ]
         },
 
@@ -165,7 +381,7 @@ module.exports = function( grunt ) {
             dest: 'en/dist/',
           },
         ],
-      },
+      }
     },
 
     requirejs: {
@@ -201,16 +417,11 @@ module.exports = function( grunt ) {
                                 'uncompressed/TweenMax',
             slick:              '../../../bower_components/slick.js/slick/' +
                                 'slick',
-            webfontloader:      '../../../bower_components/webfontloader/'+
-                                'webfontloader',
           },
 
           shim: {
             colorbox: {
               deps: [ 'jquery', ],
-            },
-            webfontloader: {
-              exports: 'WebFont',
             },
             modernizr: {
               exports: 'Modernizr',
@@ -230,15 +441,16 @@ module.exports = function( grunt ) {
             'almond',
             'colorbox',
             'jquery',
+            'utils',
             'modernizrvh',
             'modernizrvw',
             'modules/header',
             'modules/image-sequence',
             'modules/lightbox',
             'modules/sidebar',
+            'modules/tooltip',
             'ScrollMagic-gsap',
             'slick',
-            'webfontloader',
           ],
           uglify2: {
             output: {
@@ -297,8 +509,16 @@ module.exports = function( grunt ) {
     'cssmin',
     'svgmin:dist',
     'requirejs',
+    'replace:js',
     'replace:jib_cdn',
     'htmlmin:dist',
+    'compress',
+  ]);
+
+  grunt.registerTask( 'release', [
+    'build',
+    'aws_s3:dist',
+    'cloudfront:dist',
   ]);
 
 };

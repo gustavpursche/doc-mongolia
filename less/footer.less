@@ -1,8 +1,16 @@
 .footer {
   width: 100%;
 
-  p {
+  p,
+  ul {
     font-family: @base-font-sans;
+    font-size: 1rem;
+  }
+
+  ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
   }
 
   .richtext {
@@ -48,4 +56,56 @@
 
 .sm-image-sequencer .footer .image-sequence_figure {
   background: transparent;
+}
+
+@media screen and ( max-width: 1000px ) {
+  .footer {
+    border-top: 1px solid #D7D7D7;
+    margin: 2rem auto 0 auto;
+    position: relative;
+    width: 45rem;
+
+    > .image-sequence_figure--fullscreen {
+      display: none;
+      z-index: 10;
+    }
+
+    > .image-sequence_figure--fullscreen,
+    &_text-container {
+      left: 0;
+      position: absolute;
+      top: 0;
+    }
+
+    &_left {
+      padding-left: 0
+    }
+
+    &_right {
+      padding-right: 0
+    }
+
+    &_left,
+    &_right {
+      padding-top: 0;
+    }
+
+    &_text-container {
+      z-index: 30;
+    }
+  }
+}
+
+@media screen and ( max-width: 700px ) {
+  .footer {
+    position: relative;
+    width: 100%;
+
+    &_left,
+    &_right {
+      float: none;
+      padding: 0;
+      width: 100%;
+    }
+  }
 }

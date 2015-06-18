@@ -17,12 +17,11 @@
 
   &_caption {
     color: @font-color-image;
-    font-family: Arial, sans-serif;
+    font-family: @base-font-sans;
     font-size: 1rem;
     line-height: 1.3;
     max-width: 28rem;
     position: absolute;
-    text-shadow: 0 0 1px rgba( 0, 0, 0, .5 );
     z-index: 30;
   }
 
@@ -65,6 +64,8 @@
       height: auto;
       max-height: 100%;
       max-width: 100%;
+      min-height: 100%;
+      object-fit: contain;
       position: relative;
       vertical-align: middle;
       width: auto;
@@ -85,12 +86,8 @@
   }
 
   .image-sequence_caption {
-    background-color: rgba( 0, 0, 0, .5 );
-    bottom: 5%;
+    .caption();
     opacity: 0;
-    padding: .5rem;
-    max-width: 40rem;
-    width: 40rem;
   }
 }
 
@@ -101,10 +98,24 @@
     &_caption {
       color: @font-color-base;
       font-size: .8rem;
+      left: 0;
       max-width: 100%;
       padding: 1rem;
       position: static;
       text-shadow: none;
+      transform: none;
+    }
+  }
+}
+
+@media screen and ( orientation: portrait ) {
+  .sm-image-sequencer{
+    .image-sequence_figure {
+      img,
+      video {
+        min-height: auto;
+        min-width: 100%;
+      }
     }
   }
 }

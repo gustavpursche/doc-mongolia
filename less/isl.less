@@ -1,4 +1,5 @@
 .isl {
+  margin-top: 2rem;
 
   p {
     margin: 0;
@@ -6,31 +7,40 @@
 
   &_text {
     bottom: 0;
+    font-family: @base-font-sans;
+    font-size: 1.2rem;
     left: 50%;
     position: absolute;
     transform: translate( -50%, 0 );
   }
 
   &_sky {
-    background-image: data-uri( '../resources/icon/sky.svg' );
-    background-position: bottom left;
-    background-repeat: no-repeat;
-    background-size: 100% auto;
-    min-height: 400px;
-    padding-top: 2rem;
-    position: relative;
-    z-index: 100;
+    background-image: linear-gradient( to bottom, transparent 0, rgb( 208, 210, 184 ) 100% );
 
     &-text {
       padding: 0 2rem 7rem 0;
     }
 
     .richtext_subheadline {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
       margin-top: 0;
     }
   }
 
+  &_sky-inner {
+    background-image: data-uri( '../resources/icon/sky.svg' );
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    min-height: 400px;
+    padding-top: 2rem;
+    position: relative;
+    z-index: 100;
+  }
+
   &_earth {
+    background-color: rgb( 124, 139, 161 );
     background-image: data-uri( '../resources/icon/earth.svg' );
     background-position: top left;
     background-repeat: no-repeat;
@@ -40,14 +50,13 @@
 
     &-text {
       bottom: auto;
-      margin-left: -8rem;
-      padding-right: 4rem;
-      top: 8rem;
+      top: 9rem;
     }
   }
 
   &_well,
-  &_tower {
+  &_tower,
+  &_cow {
     position: absolute;
 
     img {
@@ -55,31 +64,60 @@
     }
   }
 
+  &_cow {
+    bottom: -12px;
+    height: auto;
+    left: -27rem;
+    width: 10rem;
+  }
+
   &_well {
-    bottom: -9px;
+    bottom: -10px;
     height: auto;
     left: -14rem;
-    width: 8rem;
+    width: 9rem;
   }
 
   &_tower {
     height: auto;
-    right: -26rem;
-    bottom: -23.2rem;
-    width: 23rem;
+    right: -28rem;
+    bottom: -26.6rem;
+    width: 27rem;
+  }
+}
+
+@media screen and ( max-width: 1650px ) {
+  .isl {
+    &_tower {
+      bottom: -22.7rem;
+      right: -22rem;
+      width: 23rem;
+    }
+
+    &_earth {
+      &-text {
+        padding-right: 2rem;
+        top: 7.5rem;
+      }
+    }
   }
 }
 
 @media screen and ( max-width: 1400px ) {
   .isl {
     &_tower {
-      bottom: -18.2rem;
-      right: -16rem;
-      width: 18rem;
+      bottom: -19.75rem;
+      right: -17rem;
+      width: 20rem;
+    }
+
+    &_cow {
+      left: -16rem;
+      width: 8rem;
     }
 
     &_well {
-      left: -9rem;
+      left: -5rem;
       width: 7rem;
     }
 
@@ -89,6 +127,12 @@
 
     &_earth {
       min-height: 450px;
+
+      &-text {
+        margin-left: -9rem;
+        padding-right: 0;
+        top: 6.5rem;
+      }
     }
   }
 }
@@ -101,27 +145,33 @@
       width: 15rem;
     }
 
+    &_cow {
+      left: -14rem;
+      width: 7rem;
+    }
+
     &_well {
-      left: -7rem;
+      left: -5rem;
       width: 6rem;
     }
 
-    &_sky {
+    &_sky-inner {
       min-height: 325px;
     }
 
     &_earth {
       min-height: 335px;
+
+      &-text {
+        font-size: 1.1rem;
+        top: 5rem;
+      }
     }
 
     &_sky-text {
       padding-bottom: 3rem;
-      padding-left: 1rem;
+      padding-left: 3rem;
       padding-right: 4rem;
-    }
-
-    &_earth-text {
-      top: 6rem;
     }
   }
 }
@@ -129,13 +179,26 @@
 @media screen and ( max-width: 950px ) {
   .isl {
     &_tower {
-      bottom: -12.3rem;
-      right: -11rem;
-      width: 12rem;
+      bottom: -13rem;
+      right: -11.5rem;
+      width: 13rem;
+    }
+
+    &_well {
+      left: -4rem;
+    }
+
+    &_cow {
+      left: -12.5rem;
     }
 
     &_sky-text {
       padding-right: 0;
+    }
+
+    &_earth-text {
+      font-size: 1rem;
+      margin-left: -7rem;
     }
   }
 }
@@ -143,20 +206,26 @@
 @media screen and ( max-width: 880px ) {
   .isl {
     &_earth,
-    &_sky {
+    &_sky-inner {
       min-height: 278px;
+    }
+
+    &_cow {
+      left: -13.5rem;
     }
 
     &_well {
       left: -6rem;
     }
 
-    &_earth-text {
-      top: 4rem;
+    &_sky-text {
+      font-size: 1.1rem;
+      padding-bottom: 1rem;
     }
 
-    &_text {
-      font-size: 1.1rem;
+    &_earth-text {
+      font-size: 1rem;
+      top: 4rem;
     }
   }
 }
@@ -169,6 +238,11 @@
       width: 10rem;
     }
 
+    &_cow {
+      left: -11.5rem;
+      width: 5rem;
+    }
+
     &_well {
       bottom: -6px;
       width: 4rem;
@@ -179,7 +253,7 @@
     }
 
     &_earth,
-    &_sky {
+    &_sky-inner {
       min-height: 240px;
     }
 
@@ -196,10 +270,15 @@
 
 @media screen and ( max-width: 730px ) {
   .isl {
+    margin-top: 0;
     margin-bottom: -1rem;
 
-    &_earth,
     &_sky {
+      background: transparent;
+    }
+
+    &_earth,
+    &_sky-inner {
       background: transparent;
       min-height: auto;
       padding: 0;
@@ -211,6 +290,7 @@
     }
 
     &_text {
+      font-family: @base-font;
       font-size: 1.2rem;
       margin-left: 0;
       padding: 0 1.5rem;

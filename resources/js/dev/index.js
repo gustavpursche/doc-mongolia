@@ -14,15 +14,11 @@ requirejs.config({
       TweenMax: BOWER_BASE + 'gsap/src/uncompressed/TweenMax',
       TimelineMax: BOWER_BASE + 'gsap/src/uncompressed/TimelineMax',
       slick: BOWER_BASE + 'slick.js/slick/slick',
-      webfontloader: BOWER_BASE + 'webfontloader/webfontloader',
     },
 
     shim: {
       colorbox: {
         deps: [ 'jquery', ],
-      },
-      webfontloader: {
-        exports: 'WebFont',
       },
       modernizr: {
         exports: 'Modernizr',
@@ -37,17 +33,6 @@ requirejs.config({
         depts: [ 'jquery', ],
       },
     },
-});
-
-require( [ 'webfontloader', ], function( WebFont ) {
-
-  WebFont.load({
-    classes: false,
-    google: {
-      families: [ 'Playfair+Display::latin' ],
-    },
-  });
-
 });
 
 require( [
@@ -92,13 +77,24 @@ require( [ 'jquery', ], function( $ ) {
         var $section = $( this ),
             data = $section.data(),
             module = data.module || undefined,
-            options = data.options || undefined;
+            options = data.options || undefined,
+            alwaysAllowed = [
+              'tooltip',
+            ];
 
         if( !module ) {
           return;
         }
 
         $.each( module.split(','), function loadModule( index, localModule ) {
+
+          /* allow certain modules on all screens */
+          if( alwaysAllowed.indexOf( localModule ) === -1 ) {
+            if( $( window ).width() < 1000 ) {
+              return;
+            }
+          }
+
           require( [ 'modules/' + localModule ], function( localModule ) {
             localModule( $section, options );
           });
@@ -107,11 +103,6 @@ require( [ 'jquery', ], function( $ ) {
       };
 
   $(function() {
-
-    if( $( window ).width() < 1000 ) {
-      return;
-    }
-
     /* scrollmagic trigger */
     $.each( $( '.js--enhance' ), enhanceSection );
   });
@@ -124,28 +115,46 @@ require( [
   'utils',
   ],
   function( $, utils ) {
+
+    var adoptHeader = function() {
+      var $header = $( '.header' ),
+          $fallbackImage = $header.children( '.header_fallback-image' );
+
+      $header.addClass( 'header--no-video' );
+      utils.loadImage( $fallbackImage.children( 'img' ) );
+    };
+
   $(function() {
 
-    /* detect iOs devices to hide the header */
-    if( !utils.isIosDevice() ) {
+    /* detect iOs devices and video capabilities to hide the header */
+    if( utils.canPlayVideo( 'mp4' ) || !utils.isIosDevice() ) {
       return;
     }
 
-    /* detect video capabilities */
-    if( utils.canPlayVideo( 'mp4' ) ) {
-      return;
-    }
+    adoptHeader();
 
-    $( '.header' ).addClass( 'header--no-video' );
+    /*
+    NOTE: Don't need this, until the service navigation was added back
     $( '.service' ).addClass( 'service--relative' );
+    */
   });
 
-  /* play all videos, when the tweens are not applied */
+/* Tweens were not applied - this is the minimal JS, which will be executed
+   then */
   $(function() {
-    if( $( window ).width() < 1000 ) {
-      $.each( $( '.video' ), function() {
-        this.play();
-      });
+    if( $( window ).width() >= 1000 ) {
+      return;
     }
+
+    /* play all videos, when the tweens are not applied */
+    $.each( $( 'video' ), function() {
+      this.play();
+    });
+
+    /* lazyload images */
+    $.each( $( '.js--lazyload' ), function() {
+      utils.loadImage( $( this ) );
+    });
+
   });
 });

@@ -2,5 +2,7 @@ bower_components/
 node_modules/
 resources/css/
 resources/js/dist/
+resources/icon/gzip/
 /de/dist/
 /en/dist/
+aws.json

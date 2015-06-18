@@ -12,9 +12,23 @@ define(
 
               addListElement = function( index, el ) {
                 var $child = $( '<div/>' ),
-                    $image = $( this ).children( 'img' ).clone();
+                    $image = $( this ).children( 'img' ),
+                    caption = $image.attr( 'alt' ),
+                    $newImage = $( '<img/>' )
+                                  .attr({
+                                    src: $image.data( 'lightboxsrc' ),
+                                    alt: caption || '',
+                                  });
 
-                $child.append( $image );
+                $child.append( $newImage );
+
+                if( caption ) {
+                  $( '<p/>' )
+                    .addClass( 'image_caption u-center-absolute-horizontal' )
+                    .text( caption )
+                    .appendTo( $child );
+                }
+
                 $wrap.append( $child );
               };
 
@@ -54,6 +68,7 @@ define(
                         $( '#colorbox' )
                           .find( '.colorbox_slideshow' )
                             .slick({
+                              adaptiveHeight: true,
                               initialSlide: linkIndex,
                               fade: true,
                               infinite: true,
@@ -75,7 +90,8 @@ define(
                       className: 'colorbox',
                       fadeOut: transitionSpeed,
                       height: '90%',
-                      opacity: 0.8,
+                      maxWidth: '100%',
+                      opacity: 0.85,
                       scalePhotos: false,
                       scrolling: false,
                       slideshow: false,

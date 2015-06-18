@@ -30,9 +30,14 @@
     text-shadow: none;
   }
 
+  &--no-video &_fallback-image {
+    display: block;
+  }
+
   &_content,
   &_mobile-headline {
-    background-image: linear-gradient( to bottom, transparent 0%, #090906 80% );
+    background-image: -ms-linear-gradient( bottom, transparent, #090906 80% );
+    background-image: linear-gradient( to bottom, transparent, #090906 80% );
     bottom: 0;
     padding-bottom: 2rem;
     position: absolute;
@@ -63,7 +68,6 @@
   &_teaser,
   &_mobile-headline {
     color: @font-color-image;
-    text-shadow: 0 0 1px rgba( 0, 0, 0, .5 );
   }
 
   &_mobile-headline {
@@ -71,26 +75,26 @@
   }
 
   &_teaser {
-    border-top: 1px solid white;
+    border-top: 1px solid rgba( 255, 255, 255, .6 );
     font-family: @base-font-sans;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     line-height: 1.4;
     margin: 0 auto;
-    max-width: 48rem;
-    padding-top: 1.8rem;
+    max-width: 42rem;
+    padding-top: 1.4rem;
     text-align: center;
   }
 
   &_headline,
   &_mobile-headline {
     font-family: @headline-font;
-    font-size: 3.8rem;
+    font-size: 2.8rem;
     font-weight: normal;
     margin: 0 0 1rem 0;
   }
 
   &_published {
-    font-size: .9rem;
+    font-size: .85rem;
     margin-top: 2.5rem;
   }
 
@@ -101,6 +105,29 @@
     top: 10rem;
     transform: translateX( -50% );
     z-index: 10;
+  }
+
+  &_fallback-image {
+    display: none;
+
+    img {
+      height: auto;
+      position: relative;
+      width: 100%;
+      z-index: 20;
+    }
+  }
+}
+
+/* iPad */
+@media only screen and ( min-device-width: 768px ) and ( max-device-width: 1024px ) and ( orientation: landscape ) {
+  .header {
+    &_video {
+      video {
+        height: 100%;
+        width: auto;
+      }
+    }
   }
 }
 
@@ -114,7 +141,6 @@
     &_teaser,
     &_headline {
       color: @font-color-base;
-      text-shadow: none;
     }
 
     &_headline {
@@ -140,7 +166,6 @@
 
     &_teaser {
       font-family: @base-font;
-      font-style: italic;
       padding-top: 0;
     }
 
@@ -157,6 +182,10 @@
     &_mobile-headline {
       font-size: 2.4rem;
     }
+
+    &_published {
+      margin-top: 2rem;
+    }
   }
 }
 
@@ -165,7 +194,10 @@
     &_headline {
       display: block;
       font-size: 2.6rem;
-      font-weight: bold;
+    }
+
+    &_loader {
+      display: none;
     }
 
     &_mobile-headline {
@@ -185,7 +217,7 @@
     }
 
     &_teaser {
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
 
     &_video {

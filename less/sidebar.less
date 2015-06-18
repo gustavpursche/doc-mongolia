@@ -2,19 +2,17 @@
   margin: 3.5rem -10rem 3.5rem 1.5rem;
   width: 25rem;
 
-  &_caption {
-    font-size: .9rem;
-    margin-top: .5rem;
+  &_figure-caption {
+    display: none;
+    color: @font-color-base;
+    font-family: @base-font-sans;
+    font-size: .8rem;
+    padding: 1rem;
   }
 
   &_figure {
     position: relative;
     width: 100%;
-
-    &:hover,
-    &:focus {
-      cursor: pointer;
-    }
   }
 
   &_figure + &_figure {
@@ -24,30 +22,36 @@
 
 @media screen and ( max-width: 1200px ) {
   .sidebar {
-    &_enhance {
-      margin-right: -5rem;
-      max-width: 21rem;
-    }
+    margin-right: -5rem;
+    max-width: 21rem;
+  }
+}
+
+/* iPad */
+@media only screen and ( min-device-width: 768px ) and ( max-device-width: 1024px ) and ( orientation: landscape ) {
+  .sidebar {
+    margin-right: -9rem;
   }
 }
 
 @media screen and ( max-width: 950px ) {
   .sidebar {
-    &_enhance {
-      margin-right: -2rem;
-      max-width: 17rem;
-    }
+    margin-right: -2rem;
+    max-width: 17rem;
   }
 }
 
 @media screen and ( max-width: 850px ) {
   .sidebar {
-    &_enhance {
-      display: flex;
-      float: none;
-      margin: 1.5rem 0;
-      max-width: 100%;
-      width: 100%;
+    display: flex;
+    float: none;
+    margin: 1.5rem 0;
+    max-width: 100%;
+    width: 100%;
+
+    &_figure-caption {
+      display: block;
+      padding: .2rem 0.5rem .5rem .5rem;
     }
 
     &_figure {
@@ -64,10 +68,7 @@
 
 @media screen and ( max-width: 850px ) {
   .sidebar {
-    &_enhance {
-      display: block;
-    }
-
+    display: block;
 
     &_figure + &_figure {
       margin-left: 0;

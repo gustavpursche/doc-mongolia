@@ -1,16 +1,16 @@
 define(
   [
     'jquery',
+    'utils',
     'ScrollMagic',
     'ScrollMagic-gsap',
   ],
 
-  function( $, ScrollMagic ) {
+  function( $, utils, ScrollMagic ) {
     var init = function( $container ) {
       var imageSequence = new TimelineLite(),
           controller = new ScrollMagic.Controller(),
           container = $container.get( 0 ),
-          containerWidth = $container.outerWidth(),
           $images = $container.children( '.image-sequence_figure' ),
           fadeIn = TweenLite.fromTo( $container,
                                       1,
@@ -39,10 +39,17 @@ define(
 
                   /* only initialize the Video once, instead of every scroll */
                   $video.data( 'played', true );
+                },
+
+                loadImage = function() {
+                  utils.loadImage( $( this ).children( 'img' ) );
                 };
 
             /* start load & play of every video in this section */
             $.each( $images.find( 'video' ), initializeVideo );
+
+            /* lazy loading of images */
+            $.each( $images, loadImage );
           },
 
           restoreSection = function( e ) {
@@ -54,7 +61,6 @@ define(
             var $figure = $( this ),
                 $nextFigure = $figure.next( '.image-sequence_figure' ),
                 $caption = $figure.children( '.image-sequence_caption' ),
-                captionWidth = $caption.outerWidth(),
                 dataTo = $figure.data( 'to' ) || {},
                 nextDataTo = $nextFigure.data( 'to' ) || {},
                 defaultsTo = {
@@ -64,7 +70,6 @@ define(
                   opacity: 1,
                 },
                 imageAnimation = new TimelineLite(),
-                captionLeft = ( containerWidth - captionWidth ) / 2,
                 captionFadeTime = 0.8,
                 imageFadeTime = 1.5,
                 captionFadeIn = TweenLite.to( $caption,
@@ -83,6 +88,13 @@ define(
                                                   ease: Power4.easeIn,
                                                   y: 0
                                                 } ),
+                captionMoveUp = TweenLite.to( $caption,
+                                              1.5,
+                                              {
+                                                bottom: '80%',
+                                              }, {
+                                                ease: Power4.easeOut,
+                                              }),
                 imageFadeIn = TweenLite.fromTo( $nextFigure,
                                                 imageFadeTime,
                                                 {
@@ -100,12 +112,10 @@ define(
                                              } );
 
             if( $caption.length ) {
-              $caption.css({
-                left: captionLeft,
-              });
-
               imageAnimation
-                .add( captionFadeIn );
+                .add( captionFadeIn )
+                .add( captionMoveUp )
+                .add( captionFadeOut );
             }
 
             /* Blend over images */
@@ -115,15 +125,6 @@ define(
                   imageFadeOut,
                   imageFadeIn,
                 ]);
-            } else {
-              /* FadeOut Caption */
-              if( $caption.length ) {
-                imageAnimation
-                  .set( {}, {}, '.2' );
-
-                imageAnimation
-                  .add( captionFadeOut );
-              }
             }
 
             imageSequence

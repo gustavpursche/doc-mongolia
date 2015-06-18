@@ -1,39 +1,37 @@
-# Scroll-Reportage about Uranium Extraction in Mongolia #
+Web-Scroll-Reportage about uranium mining and consequences for for the nomads in Mongolia
 
-Used Software:
-- Colorbox
-- Grunt
-- GSAP
-- jQuery
-- Slick
-- ScrollMagic
-- webfontloader
+- Authors: https://jib-collective.net
+- Publication Date: 2015/07/16
+- URL: https://jib-collective.net/stories/mongolia/
 
-## Local Installation ##
+## Installation ##
 ```bash
 npm install && bower install
+```
 
-# Build Production Environment
-grunt build
+## Watch for Changes ##
+```bash
+grunt watch
+```
 
-# Build Dev Environment
-grunt replace:dev
-
-# NOTE
-# After the production environment was built, the file-paths in
-# /{language}/dist/index.html have to be rewritten. To do so, please
-# run `grunt replace:dev` again
-
+## Run local server ##
+```bash
 # Run on http://localhost:3000
 node server.js
 ```
 
-## Watch for Changes ##
-
-There are grunt tasks for the following files:
-- /{language}/dev/index.html
-- /less/*.less
-
+## Build Production Environment ##
 ```bash
-grunt watch
+grunt build
+```
+
+## Release to a S3 ##
+```bash
+cp aws.json.default aws.json
+
+# Add your credentials to aws.json
+
+# Upload changed files to /mongolei/ and invalidate
+# /mongolei/{language}/index.html
+grunt release
 ```

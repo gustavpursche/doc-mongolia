@@ -1,24 +1,39 @@
 .colorbox {
-  background-color: white;
   outline: none;
   z-index: 999;
 
   &_slideshow {
+    background-color: @lightbox-background-color;
     height: 100%;
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding: .5rem;
     width: 100%;
 
     img {
-      height: auto;
+      height: 100%;
+      margin: 0 auto;
       max-height: 100%;
-      width: 100%;
+      width: auto;
+    }
+
+    .image_caption {
+      .caption();
+      bottom: 2%;
     }
   }
 
-  .slick_list {
+  .slick-track {
     height: 100%;
+  }
+
+  .slick-slide {
+    background-color: @lightbox-background-color;
+    text-align: center;
+  }
+
+  .slick-list {
+    height: 100% !important;
   }
 
   .slick-prev {
@@ -57,7 +72,7 @@
 /* Basic Styles */
 #cbox {
   &Overlay {
-    background: rgb( 255, 255, 255 ) none repeat scroll 0% 0%;
+    background: @lightbox-background-color none repeat scroll 0% 0%;
     height: 100%;
     left: 0;
     overflow: hidden;
@@ -68,11 +83,11 @@
   }
 
   &Close {
-    background-color: rgb( 255, 255, 255 );
+    background-color: @lightbox-background-color;
     border: none;
     position: absolute;
     right: 0;
-    top: -25px;
+    top: -23px;
 
     &:active {
       border: none;
