@@ -8,7 +8,7 @@
   &_text {
     bottom: 0;
     font-family: @base-font-sans;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     left: 50%;
     position: absolute;
     transform: translate( -50%, 0 );
@@ -50,9 +50,7 @@
 
     &-text {
       bottom: auto;
-      margin-left: -8rem;
-      padding-right: 4rem;
-      top: 8rem;
+      top: 9rem;
     }
   }
 
@@ -95,6 +93,13 @@
       right: -22rem;
       width: 23rem;
     }
+
+    &_earth {
+      &-text {
+        padding-right: 2rem;
+        top: 7.5rem;
+      }
+    }
   }
 }
 
@@ -122,6 +127,12 @@
 
     &_earth {
       min-height: 450px;
+
+      &-text {
+        margin-left: -9rem;
+        padding-right: 0;
+        top: 6.5rem;
+      }
     }
   }
 }
@@ -150,20 +161,17 @@
 
     &_earth {
       min-height: 335px;
-    }
 
-    &_text {
-      font-size: 1.2rem;
+      &-text {
+        font-size: 1.1rem;
+        top: 5rem;
+      }
     }
 
     &_sky-text {
       padding-bottom: 3rem;
       padding-left: 3rem;
       padding-right: 4rem;
-    }
-
-    &_earth-text {
-      top: 6rem;
     }
   }
 }
@@ -187,6 +195,11 @@
     &_sky-text {
       padding-right: 0;
     }
+
+    &_earth-text {
+      font-size: 1rem;
+      margin-left: -7rem;
+    }
   }
 }
 
@@ -206,15 +219,13 @@
     }
 
     &_sky-text {
+      font-size: 1.1rem;
       padding-bottom: 1rem;
     }
 
     &_earth-text {
+      font-size: 1rem;
       top: 4rem;
-    }
-
-    &_text {
-      font-size: 1.1rem;
     }
   }
 }
