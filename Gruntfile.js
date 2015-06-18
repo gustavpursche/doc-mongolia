@@ -88,6 +88,20 @@ module.exports = function( grunt ) {
               ContentEncoding: 'gzip',
               ContentType: 'text/html; charset=utf-8'
             },
+          },
+          {
+            action: 'upload',
+            expand: true,
+            cwd: 'en/dist/gzip',
+            dest: '/mongolei/en/',
+            src: [
+              '*.html',
+            ],
+            stream: true,
+            params: {
+              ContentEncoding: 'gzip',
+              ContentType: 'text/html; charset=utf-8'
+            },
           }
         ]
       },
@@ -111,9 +125,10 @@ module.exports = function( grunt ) {
       dist: {
         CallerReference: Date.now().toString(),
         Paths: {
-          Quantity: 4,
+          Quantity: 5,
           Items: [
             '/mongolei/de/index.html',
+            '/mongolei/en/index.html',
             '/mongolei/resources/js/dist/index.js',
             '/mongolei/resources/css/dist/main.css',
             '/mongolei/resources/css/dist/print.css',
@@ -152,6 +167,18 @@ module.exports = function( grunt ) {
           '*.html',
         ],
         dest: 'de/dist/gzip',
+      },
+      html_en: {
+        options: {
+          mode: 'gzip',
+          level: 9,
+        },
+        expand: true,
+        cwd: 'en/dist',
+        src: [
+          '*.html',
+        ],
+        dest: 'en/dist/gzip',
       },
       js: {
         options: {
@@ -294,6 +321,14 @@ module.exports = function( grunt ) {
             ],
             dest: 'de/dist/',
           },
+          {
+            expand: true,
+            flatten: true,
+            src: [
+              'en/dev/index.html',
+            ],
+            dest: 'en/dist/',
+          },
         ],
       },
 
@@ -333,7 +368,7 @@ module.exports = function( grunt ) {
             expand: true,
             flatten: true,
             src: [
-              'en/dev/index.html',
+              'en/dist/index.html',
             ],
             dest: 'en/dist/',
           },
