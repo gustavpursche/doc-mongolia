@@ -5,33 +5,20 @@
   position: relative;
 
   /* Styles for Devices, which are not properly able to play Videos */
-  &--no-video &_video {
+  &--no-video &_video,
+  &--no-video &_loader {
     display: none;
   }
 
   &--no-video {
+    -webkit-background-size: cover;
+       -moz-background-size: cover;
+         -o-background-size: cover;
+            background-size: cover;
+
     background-color: transparent;
-    height: auto;
-    text-align: center;
-    width: 100%;
-  }
-
-  &--no-video &_content,
-  &--no-video &_mobile-headline {
-    background: transparent;
-    position: static;
-  }
-
-  &--no-video &_published,
-  &--no-video &_headline,
-  &--no-video &_teaser,
-  &--no-video &_mobile-headline {
-    color: @font-color-base;
-    text-shadow: none;
-  }
-
-  &--no-video &_fallback-image {
-    display: block;
+    background-position: center center;
+    background-repeat: no-repeat;
   }
 
   &_content,
@@ -147,6 +134,10 @@
 
     &_headline {
       display: none;
+    }
+
+    &--no-video &_headline {
+      display: block;
     }
 
     &_mobile-headline {

@@ -117,21 +117,27 @@ require( [
   function( $, utils ) {
 
     var adoptHeader = function() {
-      var $header = $( '.header' ),
-          $fallbackImage = $header.children( '.header_fallback-image' );
+          var $header = $( '.header' ),
+              backgroundImage = $header.data( 'fallbackimage' );
 
-      $header.addClass( 'header--no-video' );
-      utils.loadImage( $fallbackImage.children( 'img' ) );
-    };
+          $header
+            .addClass( 'header--no-video' );
+
+          if( $( window ).width() >= 1000 ) {
+            $header
+              .css({
+                'background-image': 'url(' + backgroundImage + ')',
+              });
+          }
+        };
 
   $(function() {
 
     /* detect iOs devices and video capabilities to hide the header */
-    if( utils.canPlayVideo( 'mp4' ) || !utils.isIosDevice() ) {
+    if( utils.isIosDevice() || !utils.canPlayVideo( 'mp4' ) ) {
+      adoptHeader();
       return;
     }
-
-    adoptHeader();
 
     /*
     NOTE: Don't need this, until the service navigation was added back
