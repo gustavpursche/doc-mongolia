@@ -282,8 +282,12 @@
     &_earth,
     &_sky-inner {
       background: transparent;
-      min-height: auto;
+      min-height: 0;
       padding: 0;
+    }
+
+    &_earth-text {
+      top: 0;
     }
 
     &_tower,
@@ -293,11 +297,13 @@
 
     &_text {
       font-family: @base-font;
-      font-size: 1.2rem;
+      font-size: 1.05rem;
       margin-left: 0;
-      padding: 0 1.5rem;
+      padding: 0 1rem;
       position: static;
-      transform: none;
+      -ms-transform: none;
+  -webkit-transform: none;
+          transform: none;
     }
 
     p {
